@@ -1,0 +1,10 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit", // Możesz zmienić na true, jeśli chcesz automatycznego poprawiania
+    "source.organizeImports": "explicit", // Możesz zmienić na true, jeśli chcesz automatycznej organizacji importów
+    "source.sortMembers": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // Ustaw Prettiera jako domyślny formatter
+  "editor.formatOnSave": true,                           // Włącz formatowanie przy zapisie
+  "prettier.singleQuote": false                          // Upewnij się, że używa podwójnych cudzysłowów
+}
