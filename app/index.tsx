@@ -4,70 +4,48 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import "./globals.css";
 
 export default function Index() {
-  type ResultEntry = {
-    wynik: number;
-    inc: boolean;
-  };
-
-  type CzyKceMethods = {
-    nieKce: (x: string) => void;
-    kce: (x: string) => void;
-  };
-
-  type TabliczkaType =
-    | {
-        [key: string]: ResultEntry;
-      } & CzyKceMethods;
-
-  const [tabliczka, setTabliczka] = useState<TabliczkaType>(
-    {} as TabliczkaType
-  );
+  type typLoL = { [key: string]: string | number | boolean };
+  const [tabliczka, setTabliczka] = useState<typLoL[]>([]);
 
   useEffect(() => {
-    const czyKce: CzyKceMethods = {
-      nieKce: function (this: TabliczkaType, x: string) {
-        (this as any)[x].inc = false;
-      },
-      kce: function (this: TabliczkaType, x: string) {
-        (this as any)[x].inc = true;
-      },
-    };
-
-    const tabliczka: TabliczkaType = Object.create(czyKce);
+    const tabliczka: typLoL[] = [];
     for (let n = 2; n <= 12; n++) {
       for (let m = 2; m <= 12; m++) {
-        const nString: string = n.toString();
-        const mString: string = m.toString();
-
         const wynik = n * m;
-        tabliczka[`${nString}x${mString}`] = { wynik: wynik, inc: true };
+        const obj: typLoL = {} as typLoL;
+        obj.dzialanie = `${n}x${m}`;
+        obj.wynik = wynik;
+        obj.czyChce = true;
+        tabliczka.push(obj);
       }
     }
     setTabliczka(tabliczka);
   }, []);
-
-  useEffect(() => {
-    console.log(tabliczka["5x5"]);
-  }, [tabliczka]);
 
   const [wynik, setWynik] = useState<number>(0);
   function click(x: number | string) {
     setWynik((y) => {
       if (x == 0 && y == 0) {
         return 0;
-      } else if (x == "69") {
+      } else if (x == "69" && y != 0) {
         const string = y.toString();
         const length = string.length;
-        const slice = string.slice(0, length);
-        console.log("here");
+        const slice = string.slice(0, length - 1);
         return Number(slice);
+      } else if (x == "69") {
+        return 0;
       } else {
         const add = `${y}${x}`;
         return Number(add);
       }
     });
-    console.log(wynik);
   }
+
+  const [sucess, setSucess] = useState<number>(0);
+
+  useEffect(() => {
+    const length = tabliczka.length;
+  }, [sucess]);
 
   useEffect(() => {}, [wynik]);
 
@@ -167,6 +145,22 @@ export default function Index() {
               className="w-12"
             >
               <Text className="text-7xl">⤆</Text>
+            </Pressable>
+            <Pressable
+              onPress={() => {
+                click("dissable");
+              }}
+              className="w-12"
+            >
+              <Text className="text-7xl">✘</Text>
+            </Pressable>
+            <Pressable
+              onPress={() => {
+                click("enable");
+              }}
+              className="w-12"
+            >
+              <Text className="text-7xl">✔</Text>
             </Pressable>
           </View>
         </View>
