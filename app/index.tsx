@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import "./globals.css";
@@ -19,7 +19,13 @@ export default function Index() {
       for (let m = 2; m <= 12; m++) {
         const wynik = n * m;
         const obj: typLoL = {} as typLoL;
-        obj.dzialanie = `${n}x${m}`;
+        const rdm = Math.floor(Math.random() * 100);
+
+        if (rdm < 50) {
+          obj.dzialanie = `${n}x${m}`;
+        } else {
+          obj.dzialanie = `${m}x${n}`;
+        }
         obj.wynik = wynik;
         obj.czyChce = true;
         tabliczka.push(obj);
@@ -70,10 +76,13 @@ export default function Index() {
     pick();
   }, [sucess]);
 
+  const failHighlight = useRef(0);
+
   useEffect(() => {
     //tutaj jeżeli wynik więcej niż length zadania to fail
     //jeżeli wynik length == length ale != to fail
     if (zadanie[0] == undefined) return;
+    function animation() {}
     if (
       wynik.toString().length == zadanie[1].toString().length &&
       wynik != zadanie[1]
@@ -81,15 +90,13 @@ export default function Index() {
       setSucess((x) => {
         return x - 1;
       });
-      const zlyStrzal = document.getElementById("strzal");
-      if (!zlyStrzal) return;
-      zlyStrzal.style.color = "white";
-      // setSucess((x) => {
-      //   return x + 1;
-      // });
-      // setWynik(0);
+      let num = 255;
+
+      requestAnimationFrame(animation);
     }
-  });
+    return cancelAnimationFrame(animation);
+    //TODO TU jest zjebane lol
+  }, [wynik]);
 
   const styleButton =
     "w-18 bg-blue-500 py-2 px-4 rounded-lg active:bg-blue-600 shadow-md";
@@ -103,7 +110,10 @@ export default function Index() {
             <Text>{sucess}</Text>
           </View>
           <View className="bg-blue-300 w-auto h-[33%]">
-            <Text id="strzal" className="text-7xl">
+            <Text
+              id="strzal"
+              className={`text-7xl text-[rgb(${failHighlight.toString()},0,0)]`}
+            >
               {wynik}
             </Text>
           </View>
