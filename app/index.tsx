@@ -77,26 +77,37 @@ export default function Index() {
   }, [sucess]);
 
   const failHighlight = useRef(0);
+  const animationLOLID = useRef<number | null>(null);
 
   useEffect(() => {
     //tutaj jeżeli wynik więcej niż length zadania to fail
     //jeżeli wynik length == length ale != to fail
     if (zadanie[0] == undefined) return;
-    function animation() {}
+    let color = 255;
+    function animation() {
+      if (color <= 0) return;
+      failHighlight.current = color;
+      color = -1;
+      console.log(failHighlight.current);
+    }
+
     if (
       wynik.toString().length == zadanie[1].toString().length &&
       wynik != zadanie[1]
     ) {
+      animationLOLID.current = setInterval(animation, 500);
       setSucess((x) => {
         return x - 1;
       });
-      let num = 255;
-
-      requestAnimationFrame(animation);
     }
-    return cancelAnimationFrame(animation);
     //TODO TU jest zjebane lol
   }, [wynik]);
+
+  useEffect(() => {
+    return () => {
+      if (animationLOLID.current != null) clearInterval(animationLOLID.current);
+    };
+  });
 
   const styleButton =
     "w-18 bg-blue-500 py-2 px-4 rounded-lg active:bg-blue-600 shadow-md";
@@ -112,7 +123,7 @@ export default function Index() {
           <View className="bg-blue-300 w-auto h-[33%]">
             <Text
               id="strzal"
-              className={`text-7xl text-[rgb(${failHighlight.toString()},0,0)]`}
+              className={`text-7xl text-[rgb(${failHighlight.current.toString()},0,0)]`}
             >
               {wynik}
             </Text>
