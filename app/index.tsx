@@ -76,38 +76,48 @@ export default function Index() {
     pick();
   }, [sucess]);
 
-  const failHighlight = useRef(0);
+  const [fail, setFail] = useState<number>(0);
+  const red = useRef(255);
   const animationLOLID = useRef<number | null>(null);
+  const [poprawna, setPoprawna] = useState("?");
 
   useEffect(() => {
-    //tutaj jeżeli wynik więcej niż length zadania to fail
-    //jeżeli wynik length == length ale != to fail
     if (zadanie[0] == undefined) return;
-    let color = 255;
+
+    //zmiana koloru "wynik" na czerwony jak błąd
     function animation() {
-      if (color <= 0) return;
-      failHighlight.current = color;
-      color = -1;
-      console.log(failHighlight.current);
+      if (red.current <= 0) {
+        if (animationLOLID.current != null)
+          clearInterval(animationLOLID.current);
+        red.current = 250;
+        return;
+      } else {
+        setFail(() => {
+          red.current -= 5;
+
+          const y = red.current;
+          return y;
+        });
+      }
     }
 
     if (
       wynik.toString().length == zadanie[1].toString().length &&
       wynik != zadanie[1]
     ) {
-      animationLOLID.current = setInterval(animation, 500);
+      animationLOLID.current = setInterval(animation, 25);
       setSucess((x) => {
         return x - 1;
       });
+      setPoprawna(zadanie[1].toString());
+    } else {
+      console.log("wpadłem w elser");
     }
     //TODO TU jest zjebane lol
-  }, [wynik]);
-
-  useEffect(() => {
     return () => {
       if (animationLOLID.current != null) clearInterval(animationLOLID.current);
     };
-  });
+  }, [wynik]);
 
   const styleButton =
     "w-18 bg-blue-500 py-2 px-4 rounded-lg active:bg-blue-600 shadow-md";
@@ -118,12 +128,14 @@ export default function Index() {
         <View className="container w-auto h-[100%] bg-green-100">
           <View className="bg-yellow-300 w-auto h-[33%]">
             <Text className="text-7xl">{zadanie[0]}</Text>
+            <Text className="text-7xl text-green-500">{poprawna}</Text>
             <Text>{sucess}</Text>
           </View>
           <View className="bg-blue-300 w-auto h-[33%]">
             <Text
               id="strzal"
-              className={`text-7xl text-[rgb(${failHighlight.current.toString()},0,0)]`}
+              className={`text-7xl `}
+              style={{ color: `rgb(${fail},0,0)` }}
             >
               {wynik}
             </Text>
