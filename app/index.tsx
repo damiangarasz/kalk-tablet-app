@@ -10,10 +10,12 @@ export default function Index() {
     wynik: number;
   };
   const [tabliczka, setTabliczka] = useState<typLoL[]>([]);
-  const [sucess, setSucess] = useState<number>(-1);
+  const [sucess, setSucess] = useState<number>(0);
   const [zadanie, setZadanie] = useState<(string | number)[]>([]);
+  const [shuffle, setShuffle] = useState("");
 
   useEffect(() => {
+    //Ustawianie tabliczki mnożenia
     const tabliczka: typLoL[] = [];
     for (let n = 2; n <= 12; n++) {
       for (let m = 2; m <= 12; m++) {
@@ -31,8 +33,9 @@ export default function Index() {
         tabliczka.push(obj);
       }
     }
-    setSucess(0);
+
     setTabliczka(tabliczka);
+    setShuffle("trafiony");
   }, []);
 
   const [wynik, setWynik] = useState<number>(0);
@@ -56,12 +59,14 @@ export default function Index() {
 
   useEffect(() => {
     const length = tabliczka.length;
-
     if (length == 0) return;
 
     function pick() {
       const shuffle = Math.floor(Math.random() * length);
       const picked = tabliczka[shuffle];
+
+      setPoprawna("?");
+      setWynik(0);
 
       if (picked.czyChce == false) {
         pick();
@@ -73,8 +78,13 @@ export default function Index() {
         setZadanie(zadanie);
       }
     }
-    pick();
-  }, [sucess]);
+
+    if (shuffle == "trafiony") {
+      pick();
+    } else if (shuffle == "zatopiony") {
+      setTimeout(pick, 3000);
+    }
+  }, [shuffle]);
 
   const [fail, setFail] = useState<number>(0);
   const red = useRef(255);
@@ -110,8 +120,15 @@ export default function Index() {
         return x - 1;
       });
       setPoprawna(zadanie[1].toString());
-    } else {
-      console.log("wpadłem w elser");
+      setShuffle("zatopiony");
+    } else if (
+      wynik.toString().length == zadanie[1].toString().length &&
+      wynik == zadanie[1]
+    ) {
+      setSucess((x) => {
+        return x + 1;
+      });
+      setShuffle("trafiony");
     }
     //TODO TU jest zjebane lol
     return () => {
