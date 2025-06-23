@@ -81,8 +81,10 @@ export default function Index() {
 
     if (shuffle == "trafiony") {
       pick();
+      setShuffle("");
     } else if (shuffle == "zatopiony") {
       setTimeout(pick, 3000);
+      setShuffle("");
     }
   }, [shuffle]);
 
@@ -121,10 +123,7 @@ export default function Index() {
       });
       setPoprawna(zadanie[1].toString());
       setShuffle("zatopiony");
-    } else if (
-      wynik.toString().length == zadanie[1].toString().length &&
-      wynik == zadanie[1]
-    ) {
+    } else if (wynik.toString().length == zadanie[1].toString().length) {
       setSucess((x) => {
         return x + 1;
       });
