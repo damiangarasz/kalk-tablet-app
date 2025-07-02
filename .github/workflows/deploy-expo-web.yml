@@ -32,9 +32,10 @@ jobs:
           npm cache clean --force
           npm ci
 
-      # 4. Budowanie aplikacji webowej Expo
+      # 4. Budowanie aplikacji webowej Expo ja jebie
+
       - name: Build Expo web app
-        run: npx expo export --clear --output-dir=dist
+        run: ASSET_BASE_URL=/kalk-tablet-app/ npx expo export --clear --output-dir=dist
 
       # 5. Wdrożenie zbudowanej aplikacji na GitHub Pages
       - name: Deploy to GitHub Pages
