@@ -34,6 +34,8 @@ jobs:
 
       # 4. Budowanie aplikacji webowej Expo
       - name: Build Expo web app
+        env:
+          EXPO_PUBLIC_ROUTER_BASEPATH: /kalk-tablet-app
         run: npx expo export --clear
 
       # 5. NOWY KROK: Wymuszenie poprawnych ścieżek
