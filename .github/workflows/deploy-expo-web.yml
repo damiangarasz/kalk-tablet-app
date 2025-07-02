@@ -32,15 +32,20 @@ jobs:
           npm cache clean --force
           npm ci
 
-      # 4. Budowanie aplikacji webowej Expo ja jebie
-
+      # 4. Budowanie aplikacji webowej Expo
       - name: Build Expo web app
-        run: ASSET_BASE_URL=/kalk-tablet-app/ npx expo export --clear --output-dir=dist
+        run: npx expo export --clear
 
-      # 5. Wdrożenie zbudowanej aplikacji na GitHub Pages
+      # 5. NOWY KROK: Wymuszenie poprawnych ścieżek
+      - name: Fix asset paths
+        run: |
+          find ./dist -type f -name "*.html" -exec sed -i 's|href="/|href="/kalk-tablet-app/|g' {} +
+          find ./dist -type f -name "*.html" -exec sed -i 's|src="/|src="/kalk-tablet-app/|g' {} +
+          find ./dist -type f -name "*.js" -exec sed -i 's|"/_expo/|"/kalk-tablet-app/_expo/|g' {} +
+
+      # 6. Wdrożenie na GitHub Pages (dawny krok 5)
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist # Katalog, który ma być looool
-
+          publish_dir: ./dist
