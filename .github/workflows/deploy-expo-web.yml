@@ -45,7 +45,8 @@ jobs:
           find ./dist -type f -name "*.html" -exec sed -i 's|src="/|src="/kalk-tablet-app/|g' {} +
           find ./dist -type f -name "*.js" -exec sed -i 's|"/_expo/|"/kalk-tablet-app/_expo/|g' {} +
 
-      # 6. Wdrożenie na GitHub Pages (dawny krok 5)
+      # 6. Wdrożenie na GitHub Pages (dawny krok 5)asdasdsa
+      # lol
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
