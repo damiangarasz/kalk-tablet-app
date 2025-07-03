@@ -4,6 +4,12 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import "./globals.css";
 
 export default function Index() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   type typLoL = {
     czyChce: boolean;
     dzialanie: string;
@@ -137,6 +143,14 @@ export default function Index() {
 
   const styleButton =
     "w-18 bg-blue-500 py-2 px-4 rounded-lg active:bg-blue-600 shadow-md";
+
+  if (!isClient) {
+    return (
+      <View>
+        <Text>Ładowanie...</Text>
+      </View>
+    );
+  }
 
   return (
     <SafeAreaProvider>
