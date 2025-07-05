@@ -21,7 +21,8 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png",
+      "baseUrl": "/kalk-tablet-app"
     },
     "plugins": [
       "expo-router",
@@ -36,10 +37,6 @@
       ],
       "expo-web-browser"
     ],
-    "router": {
-      "origin": "https://damiangarasz.github.io",
-      "baseUrl": "/kalk-tablet-app"
-    },
     "experiments": {
       "typedRoutes": true
     }
