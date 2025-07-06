@@ -141,6 +141,9 @@ export default function Index() {
   return (
     <SafeAreaProvider>
       <SafeAreaView>
+        <body>
+          <link rel="manifest" href="/manifest.json" />
+        </body>
         <View className="container w-auto h-[100%] bg-green-100">
           <View className="bg-yellow-300 w-auto h-[33%]">
             <Text className="text-7xl">{zadanie[0]}</Text>
