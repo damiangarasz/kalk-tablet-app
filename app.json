@@ -22,7 +22,21 @@
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/images/favicon.png",
-      "baseUrl": "/kalk-tablet-app"
+      "baseUrl": "/kalk-tablet-app",
+      "name": "Moja Apka PWA",
+      "shortName": "Mnoż",
+      "startUrl": "/",
+      "display": "standalone",
+      "backgroundColor": "#ffffff",
+      "themeColor": "#000000",
+      "description": "Krótki opis mojej wspaniałej aplikacji PWA.",
+      "icons": [
+        {
+          "src": "./assets/images/bober.jpg",
+          "sizes": "204x192",
+          "type": "image/jpg"
+        }
+      ]
     },
     "plugins": [
       "expo-router",
