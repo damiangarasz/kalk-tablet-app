@@ -1,147 +1,153 @@
-import { useEffect, useRef, useState } from "react";
-import { Pressable, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import "./globals.css";
+import Proba from "./proba/Proba";
+import Zadanie from "./zadanie/Zadanie";
 
 export default function Index() {
-  type typLoL = {
-    czyChce: boolean;
-    dzialanie: string;
-    wynik: number;
-  };
-  const [tabliczka, setTabliczka] = useState<typLoL[]>([]);
-  const [sucess, setSucess] = useState<number>(0);
-  const [zadanie, setZadanie] = useState<(string | number)[]>([]);
-  const [shuffle, setShuffle] = useState("");
+  console.log(Zadanie);
+  // type typLoL = {
+  //   czyChce: boolean;
+  //   dzialanie: string;
+  //   wynik: number;
+  // };
+  // const [tabliczka, setTabliczka] = useState<typLoL[]>([]);
+  // const [sucess, setSucess] = useState<number>(0);
+  // const [zadanie, setZadanie] = useState<(string | number)[]>([]);
+  // const [shuffle, setShuffle] = useState("");
 
-  useEffect(() => {
-    //Ustawianie tabliczki mnożenia
-    const tabliczka: typLoL[] = [];
-    for (let n = 2; n <= 12; n++) {
-      for (let m = 2; m <= 12; m++) {
-        const wynik = n * m;
-        const obj: typLoL = {} as typLoL;
-        const rdm = Math.floor(Math.random() * 100);
+  // useEffect(() => {
+  //   //Ustawianie tabliczki mnożenia
+  //   const tabliczka: typLoL[] = [];
+  //   for (let n = 2; n <= 12; n++) {
+  //     for (let m = 2; m <= 12; m++) {
+  //       const wynik = n * m;
+  //       const obj: typLoL = {} as typLoL;
+  //       const rdm = Math.floor(Math.random() * 100);
 
-        if (rdm < 50) {
-          obj.dzialanie = `${n}x${m}`;
-        } else {
-          obj.dzialanie = `${m}x${n}`;
-        }
-        obj.wynik = wynik;
-        obj.czyChce = true;
-        tabliczka.push(obj);
-      }
-    }
+  //       if (rdm < 50) {
+  //         obj.dzialanie = `${n}x${m}`;
+  //       } else {
+  //         obj.dzialanie = `${m}x${n}`;
+  //       }
+  //       obj.wynik = wynik;
+  //       obj.czyChce = true;
+  //       tabliczka.push(obj);
+  //     }
+  //   }
 
-    setTabliczka(tabliczka);
-    setShuffle("trafiony");
-  }, []);
+  //   setTabliczka(tabliczka);
+  //   setShuffle("trafiony");
+  // }, []);
 
-  const [wynik, setWynik] = useState<number>(0);
-  function click(x: number | string) {
-    setWynik((y) => {
-      if (x == 0 && y == 0) {
-        return 0;
-      } else if (x == "69" && y != 0) {
-        const string = y.toString();
-        const length = string.length;
-        const slice = string.slice(0, length - 1);
-        return Number(slice);
-      } else if (x == "69") {
-        return 0;
-      } else {
-        const add = `${y}${x}`;
-        return Number(add);
-      }
-    });
-  }
+  // const generatorTabliczki = Shuffle();
+  // setTabliczka(generatorTabliczki[0]);
 
-  useEffect(() => {
-    const length = tabliczka.length;
-    if (length == 0) return;
+  // const [wynik, setWynik] = useState<number>(0);
+  // function click(x: number | string) {
+  //   setWynik((y) => {
+  //     if (x == 0 && y == 0) {
+  //       return 0;
+  //     } else if (x == "69" && y != 0) {
+  //       const string = y.toString();
+  //       const length = string.length;
+  //       const slice = string.slice(0, length - 1);
+  //       return Number(slice);
+  //     } else if (x == "69") {
+  //       return 0;
+  //     } else {
+  //       const add = `${y}${x}`;
+  //       return Number(add);
+  //     }
+  //   });
+  // }
 
-    function pick() {
-      const shuffle = Math.floor(Math.random() * length);
-      const picked = tabliczka[shuffle];
+  // useEffect(() => {
+  //   const length = tabliczka.length;
+  //   if (length == 0) return;
 
-      setPoprawna("?");
-      setWynik(0);
+  //   function pick() {
+  //     const shuffle = Math.floor(Math.random() * length);
+  //     const picked = tabliczka[shuffle];
 
-      if (picked.czyChce == false) {
-        pick();
-      } else {
-        const dzialanie: string = picked.dzialanie;
-        const wynik = picked.wynik;
-        const zadanie: (string | number)[] = [];
-        zadanie.push(dzialanie, wynik);
-        setZadanie(zadanie);
-      }
-    }
+  //     setPoprawna("?");
+  //     setWynik(0);
 
-    if (shuffle == "trafiony") {
-      pick();
-      setShuffle("");
-    } else if (shuffle == "zatopiony") {
-      setTimeout(pick, 3000);
-      setShuffle("");
-    }
-  }, [shuffle]);
+  //     if (picked.czyChce == false) {
+  //       pick();
+  //     } else {
+  //       const dzialanie: string = picked.dzialanie;
+  //       const wynik = picked.wynik;
+  //       const zadanie: (string | number)[] = [];
+  //       zadanie.push(dzialanie, wynik);
+  //       setZadanie(zadanie);
+  //     }
+  //   }
 
-  const [fail, setFail] = useState<number>(0);
-  const red = useRef(255);
-  const animationLOLID = useRef<number | null>(null);
-  const [poprawna, setPoprawna] = useState("?");
+  //   if (shuffle == "trafiony") {
+  //     pick();
+  //     setShuffle("");
+  //   } else if (shuffle == "zatopiony") {
+  //     setTimeout(pick, 3000);
+  //     setShuffle("");
+  //   }
+  // }, [shuffle]);
 
-  useEffect(() => {
-    if (zadanie[0] == undefined) return;
+  // const [fail, setFail] = useState<number>(0);
+  // const red = useRef(255);
+  // const animationLOLID = useRef<number | null>(null);
+  // const [poprawna, setPoprawna] = useState("?");
 
-    //zmiana koloru "wynik" na czerwony jak błąd
-    function animation() {
-      if (red.current <= 0) {
-        if (animationLOLID.current != null)
-          clearInterval(animationLOLID.current);
-        red.current = 250;
-        return;
-      } else {
-        setFail(() => {
-          red.current -= 5;
+  // useEffect(() => {
+  //   if (zadanie[0] == undefined) return;
 
-          const y = red.current;
-          return y;
-        });
-      }
-    }
+  //   //zmiana koloru "wynik" na czerwony jak błąd
+  //   function animation() {
+  //     if (red.current <= 0) {
+  //       if (animationLOLID.current != null)
+  //         clearInterval(animationLOLID.current);
+  //       red.current = 250;
+  //       return;
+  //     } else {
+  //       setFail(() => {
+  //         red.current -= 5;
 
-    if (
-      wynik.toString().length == zadanie[1].toString().length &&
-      wynik != zadanie[1]
-    ) {
-      animationLOLID.current = setInterval(animation, 25);
-      setSucess((x) => {
-        return x - 1;
-      });
-      setPoprawna(zadanie[1].toString());
-      setShuffle("zatopiony");
-    } else if (wynik.toString().length == zadanie[1].toString().length) {
-      setSucess((x) => {
-        return x + 1;
-      });
-      setShuffle("trafiony");
-    }
-    //TODO TU jest zjebane lol looooool
-    return () => {
-      if (animationLOLID.current != null) clearInterval(animationLOLID.current);
-    };
-  }, [wynik]);
+  //         const y = red.current;
+  //         return y;
+  //       });
+  //     }
+  //   }
 
-  const styleButton =
-    "w-18 bg-blue-500 py-2 px-4 rounded-lg active:bg-blue-600 shadow-md";
+  //   if (
+  //     wynik.toString().length == zadanie[1].toString().length &&
+  //     wynik != zadanie[1]
+  //   ) {
+  //     animationLOLID.current = setInterval(animation, 25);
+  //     setSucess((x) => {
+  //       return x - 1;
+  //     });
+  //     setPoprawna(zadanie[1].toString());
+  //     setShuffle("zatopiony");
+  //   } else if (wynik.toString().length == zadanie[1].toString().length) {
+  //     setSucess((x) => {
+  //       return x + 1;
+  //     });
+  //     setShuffle("trafiony");
+  //   }
+  //   //TODO TU jest zjebane lol looooool
+  //   return () => {
+  //     if (animationLOLID.current != null) clearInterval(animationLOLID.current);
+  //   };
+  // }, [wynik]);
+
+  // const styleButton =
+  //   "w-18 bg-blue-500 py-2 px-4 rounded-lg active:bg-blue-600 shadow-md";
 
   return (
     <SafeAreaProvider>
       <SafeAreaView>
-        <View className="container w-auto h-[100%] bg-green-100">
+        <Zadanie />
+        <Proba />
+        {/* <View className="container w-auto h-[100%] bg-green-100">
           <View className="bg-yellow-300 w-auto h-[33%]">
             <Text className="text-7xl">{zadanie[0]}</Text>
             <Text className="text-7xl text-green-500">{poprawna}</Text>
@@ -262,7 +268,7 @@ export default function Index() {
               <Text className="text-7xl">✔</Text>
             </Pressable>
           </View>
-        </View>
+        </View> */}
       </SafeAreaView>
     </SafeAreaProvider>
   );
