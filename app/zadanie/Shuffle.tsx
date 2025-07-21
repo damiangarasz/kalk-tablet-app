@@ -4,7 +4,7 @@ type typLoL = {
   wynik: number;
 };
 
-export default function Shuffle(setTabliczka: (value: typLoL[]) => void) {
+export default function Shuffle() {
   //Ustawianie tabliczki mnożenia
   const tabliczka: typLoL[] = [];
   for (let n = 2; n <= 12; n++) {
@@ -24,9 +24,5 @@ export default function Shuffle(setTabliczka: (value: typLoL[]) => void) {
     }
   }
 
-  console.log("halo to ja");
-
-  setTabliczka(tabliczka);
-
-  //   return [tabliczka, "rafiony"];
+  return [tabliczka, "trafiony"] as const;
 }
