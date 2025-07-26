@@ -8,9 +8,7 @@ export default function Picker(
   tabliczkaMnożenia: readonly [typLoL[], string],
   setPoprawna: React.Dispatch<React.SetStateAction<string>>,
   setWpisanyWynik: React.Dispatch<React.SetStateAction<number>>,
-  setZadaneMnożenie: React.Dispatch<
-    React.SetStateAction<(string | number)[] | undefined>
-  >
+  setZadaneMnożenie: React.Dispatch<React.SetStateAction<[string, number]>>
 ) {
   const tablica = tabliczkaMnożenia[0];
   const length = tablica.length;

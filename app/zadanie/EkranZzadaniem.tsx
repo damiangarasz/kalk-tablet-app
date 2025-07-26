@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Text, View } from "react-native";
 
 type EkranProps = {
-  zadaneMnozenie: string | number | undefined;
-  wynik: number;
+  zadaneMnozenie: string;
+  wpisanyWynik: number;
+  wynikMnozenia: number;
   setSucess: React.Dispatch<React.SetStateAction<number>>;
   setPoprawna: React.Dispatch<React.SetStateAction<string>>;
   setShuffle: React.Dispatch<React.SetStateAction<string>>;
@@ -11,7 +12,8 @@ type EkranProps = {
 
 export default function Ekran({
   zadaneMnozenie,
-  wynik,
+  wpisanyWynik,
+  wynikMnozenia,
   setSucess,
   setPoprawna,
   setShuffle,
@@ -41,29 +43,39 @@ export default function Ekran({
     }
 
     if (
-      wynik.toString().length == zadaneMnozenie.toString().length &&
-      wynik != zadaneMnozenie
+      wynikMnozenia.toString().length == wpisanyWynik.toString().length &&
+      wynikMnozenia != wpisanyWynik
     ) {
+      console.log("długość się zgadza ale wynik nie");
       animationLOLID.current = setInterval(animation, 25);
       setSucess((x) => {
         return x - 1;
       });
-      setPoprawna(zadaneMnozenie.toString());
+      setPoprawna(wpisanyWynik.toString());
       setShuffle("zatopiony");
-    } else if (wynik.toString().length == zadaneMnozenie.toString().length) {
+    } else if (
+      wynikMnozenia.toString().length == wpisanyWynik.toString().length &&
+      wynikMnozenia == wpisanyWynik &&
+      wynikMnozenia != 0
+    ) {
+      console.log("długość się zgadza", wynikMnozenia, wpisanyWynik);
       setSucess((x) => {
         return x + 1;
       });
       setShuffle("trafiony");
+    } else {
+      console.log("ściek");
     }
     //TODO TU jest zjebane lol looooool
     return () => {
       if (animationLOLID.current != null) clearInterval(animationLOLID.current);
     };
-  }, [wynik]);
+  }, [wpisanyWynik]);
   return (
     <View className="w-auto h-[150]">
-      <Text className="text-5xl">{zadaneMnozenie}</Text>
+      <Text className={`text-9xl text-[rgb(${red},0,0)]`}>
+        {zadaneMnozenie}
+      </Text>
     </View>
   );
 }

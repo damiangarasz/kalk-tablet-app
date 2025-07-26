@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
-import Ekran from "./EkranZzadaniem";
-import Picker from "./Picker";
-import Shuffle from "./Shuffle";
+import Ekran from "./EkranZzadaniem.tsx";
+import Picker from "./Picker.tsx";
+import Shuffle from "./Shuffle.tsx";
 
 export default function Zadanie({
   setWpisanyWynik,
@@ -11,7 +11,6 @@ export default function Zadanie({
   setWpisanyWynik: React.Dispatch<React.SetStateAction<number>>;
   wpisanyWynik: number;
 }) {
-  console.log("setWpisanyWynik type:", typeof setWpisanyWynik);
   type typLoL = {
     czyChce: boolean;
     dzialanie: string;
@@ -23,7 +22,10 @@ export default function Zadanie({
 
   const [poprawna, setPoprawna] = useState("?");
 
-  const [zadaneMnozenie, setZadaneMnozenie] = useState<(string | number)[]>();
+  const [zadaneMnozenie, setZadaneMnozenie] = useState<[string, number]>([
+    "",
+    0,
+  ]);
   const [tabliczkaMnożenia, setTabliczkaMnożenia] = useState<
     readonly [typLoL[], string]
   >([[], ""]);
@@ -39,15 +41,12 @@ export default function Zadanie({
     Picker(tabliczkaMnożenia, setPoprawna, setWpisanyWynik, setZadaneMnozenie);
   }, [tabliczkaMnożenia]);
 
-  useEffect(() => {
-    console.log("tutaj:", zadaneMnozenie);
-  }, [zadaneMnozenie]);
-
   return (
     <View className="bg-blue-300 w-auto h-1/3">
       <Ekran
         zadaneMnozenie={zadaneMnozenie?.[0]}
-        wynik={wpisanyWynik}
+        wynikMnozenia={zadaneMnozenie?.[1]}
+        wpisanyWynik={wpisanyWynik}
         setSucess={setSucess}
         setPoprawna={setPoprawna}
         setShuffle={setShuffle}
