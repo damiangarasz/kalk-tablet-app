@@ -6,30 +6,26 @@ type typLoL = {
 
 export default function Picker(
   tabliczkaMnożenia: readonly [typLoL[], string],
-  setPoprawna: (x: string) => void,
-  setWpisanyWynik: (y: number) => void,
-  setZadaneMnożenie: (z: (string | number)[]) => void
+  setPoprawna: React.Dispatch<React.SetStateAction<string>>,
+  setWpisanyWynik: React.Dispatch<React.SetStateAction<number>>,
+  setZadaneMnożenie: React.Dispatch<
+    React.SetStateAction<(string | number)[] | undefined>
+  >
 ) {
   const tablica = tabliczkaMnożenia[0];
   const length = tablica.length;
   if (length == 0) return;
-  console.log("hera");
-  pick();
-  function pick() {
-    const shuffle = Math.floor(Math.random() * length);
-    const picked = tablica[shuffle];
+  const dostepneZadania = tablica.filter((zadanie) => zadanie.czyChce);
 
-    setPoprawna("?");
-    setWpisanyWynik(0);
-
-    if (picked.czyChce == false) {
-      pick();
-    } else {
-      const dzialanie: string = picked.dzialanie;
-      const wynik = picked.wynik;
-      const zadanie: (string | number)[] = [];
-      zadanie.push(dzialanie, wynik);
-      setZadaneMnożenie(zadanie);
-    }
+  if (dostepneZadania.length === 0) {
+    console.log("Brak dostępnych zadań do wylosowania.");
+    return;
   }
+
+  const losowyIndex = Math.floor(Math.random() * dostepneZadania.length);
+  const wylosowaneZadanie = dostepneZadania[losowyIndex];
+
+  setPoprawna("?");
+  setWpisanyWynik(0);
+  setZadaneMnożenie([wylosowaneZadanie.dzialanie, wylosowaneZadanie.wynik]);
 }

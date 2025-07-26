@@ -26,7 +26,7 @@ export default function Klawiatura({ setWynik }: lolTyp) {
   const styleButton =
     "w-18 bg-blue-500 py-2 px-4 rounded-lg active:bg-blue-600 shadow-md";
   return (
-    <View className="bg-red-400 w-auto h-[33%] flex flex-row gap-5 flex-wrap">
+    <View className="bg-red-400 w-auto h-1/3 flex flex-row gap-5 flex-wrap">
       <Pressable
         onPress={() => {
           click(1);

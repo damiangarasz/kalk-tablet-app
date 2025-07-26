@@ -6,7 +6,8 @@
       "@/*": ["./*"]
     },
     "noUnusedParameters": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "allowImportingTsExtensions": true
   },
   "include": [
     "**/*.ts",
