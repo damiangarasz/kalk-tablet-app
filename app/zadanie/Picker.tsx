@@ -24,6 +24,6 @@ export default function Picker(
   const wylosowaneZadanie = dostepneZadania[losowyIndex];
 
   setPoprawna("?");
-  setWpisanyWynik(0);
+  // setWpisanyWynik(0);
   setZadaneMnożenie([wylosowaneZadanie.dzialanie, wylosowaneZadanie.wynik]);
 }

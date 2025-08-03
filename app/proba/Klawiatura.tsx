@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
-type lolTyp = { setWynik: React.Dispatch<React.SetStateAction<number>> };
+type lolTyp = { setWpisanyWynik: React.Dispatch<React.SetStateAction<number>> };
 
-export default function Klawiatura({ setWynik }: lolTyp) {
+export default function Klawiatura({ setWpisanyWynik }: lolTyp) {
   function click(x: number | string) {
-    setWynik((y) => {
+    setWpisanyWynik((y) => {
       if (x == 0 && y == 0) {
         return 0;
       } else if (x == "69" && y != 0) {
