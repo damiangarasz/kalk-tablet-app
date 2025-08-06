@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
 type lolTyp = { setWpisanyWynik: React.Dispatch<React.SetStateAction<number>> };
@@ -22,7 +21,6 @@ export default function Klawiatura({ setWpisanyWynik }: lolTyp) {
     });
   }
 
-  const [poprawna, setPoprawna] = useState("?");
   const styleButton =
     "w-18 bg-blue-500 py-2 px-4 rounded-lg active:bg-blue-600 shadow-md";
   return (
@@ -114,22 +112,6 @@ export default function Klawiatura({ setWpisanyWynik }: lolTyp) {
         className={styleButton}
       >
         <Text className="text-7xl">⤆</Text>
-      </Pressable>
-      <Pressable
-        onPress={() => {
-          click("dissable");
-        }}
-        className={styleButton}
-      >
-        <Text className="text-7xl">✘</Text>
-      </Pressable>
-      <Pressable
-        onPress={() => {
-          click("enable");
-        }}
-        className={styleButton}
-      >
-        <Text className="text-7xl">✔</Text>
       </Pressable>
     </View>
   );

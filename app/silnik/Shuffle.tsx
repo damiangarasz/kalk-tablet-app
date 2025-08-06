@@ -1,5 +1,5 @@
 type typLoL = {
-  czyChce: boolean;
+  poziom: string;
   dzialanie: string;
   wynik: number;
 };
@@ -19,7 +19,6 @@ export default function Shuffle() {
         obj.dzialanie = `${m}x${n}`;
       }
       obj.wynik = wynik;
-      obj.czyChce = true;
       tabliczka.push(obj);
     }
   }
