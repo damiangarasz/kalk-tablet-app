@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { View } from "react-native";
+import Shuffle from "../silnik/Shuffle";
 import Klawiatura from "../UI/Klawiatura";
 import EkranZzadaniem from "./EkranZzadaniem";
 import TablicaWynikow from "./TablicaWynikw";
@@ -9,6 +10,7 @@ export default function Game() {
 
   useEffect(() => {
     console.log(wpisanyWynik);
+    console.log(Shuffle());
   }, [wpisanyWynik]);
 
   return (

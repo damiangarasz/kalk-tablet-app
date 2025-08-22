@@ -5,6 +5,27 @@ type typLoL = {
 };
 
 export default function Shuffle() {
+  const easy = [
+    ,
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+    { dialanie: "2x2", wynik: 4 },
+  ];
+
   //Ustawianie tabliczki mnożenia
   const tabliczka: typLoL[] = [];
   for (let n = 2; n <= 12; n++) {
