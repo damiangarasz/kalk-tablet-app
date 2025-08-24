@@ -10,7 +10,7 @@ export default function Game() {
 
   useEffect(() => {
     console.log(wpisanyWynik);
-    console.log(Shuffle());
+    console.log(Shuffle("easy"));
   }, [wpisanyWynik]);
 
   return (

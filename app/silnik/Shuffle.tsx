@@ -1,48 +1,39 @@
-type typLoL = {
-  poziom: string;
-  dzialanie: string;
-  wynik: number;
-};
+import { useState } from "react";
+import { zadanie } from "../types";
+import { easy } from "./Tabliczka";
+//TODO zastosuj wagę
 
-export default function Shuffle() {
-  const easy = [
-    ,
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-    { dialanie: "2x2", wynik: 4 },
-  ];
+const [proba, setProba] = useState(0);
 
-  //Ustawianie tabliczki mnożenia
-  const tabliczka: typLoL[] = [];
-  for (let n = 2; n <= 12; n++) {
-    for (let m = 2; m <= 12; m++) {
-      const wynik = n * m;
-      const obj: typLoL = {} as typLoL;
-      const rdm = Math.floor(Math.random() * 100);
+export default function Shuffle(props: string) {
+  const piecZadan: zadanie = [];
 
-      if (rdm < 50) {
-        obj.dzialanie = `${n}x${m}`;
-      } else {
-        obj.dzialanie = `${m}x${n}`;
+  function pick5(tabliczka: zadanie) {
+    for (let n = 0; n <= 5; n++) {
+      function pickZadanie() {
+        const lenght = tabliczka.length;
+        const number = Math.floor(Math.random() * lenght);
+        const rzutKostka = Math.random();
+
+        if (tabliczka[number].waga > rzutKostka) {
+          piecZadan.push(tabliczka[number]);
+        } else {
+          if (proba >= 5) {
+            return;
+          } else {
+            setProba((x) => (x += 1));
+            pickZadanie();
+          }
+        }
       }
-      obj.wynik = wynik;
-      tabliczka.push(obj);
+      pickZadanie();
     }
   }
 
-  return [tabliczka, "trafiony"] as const;
+  switch (props) {
+    case "easy":
+      pick5(easy);
+  }
+
+  return piecZadan;
 }
