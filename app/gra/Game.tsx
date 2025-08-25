@@ -1,22 +1,21 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { View } from "react-native";
-import Shuffle from "../silnik/Shuffle";
 import Klawiatura from "../UI/Klawiatura";
 import EkranZzadaniem from "./EkranZzadaniem";
 import TablicaWynikow from "./TablicaWynikw";
 
-export default function Game() {
+export default function Game(props: { poziom: string }) {
   const [wpisanyWynik, setWpisanyWynik] = useState(0);
 
-  useEffect(() => {
-    console.log(wpisanyWynik);
-    console.log(Shuffle("easy"));
-  }, [wpisanyWynik]);
+  const { poziom } = props;
+
+  //ustawia pięć zadań do wykonania
 
   return (
     <View className="h-screen">
+      const l
       <View className="h-[300]">
-        <EkranZzadaniem />
+        <EkranZzadaniem poziom={poziom} />
       </View>
       <View className="h-[100]">
         <TablicaWynikow />

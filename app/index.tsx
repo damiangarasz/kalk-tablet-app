@@ -27,7 +27,7 @@ export default function Index() {
 
   const App = () => (
     <SafeAreaView>
-      <Game />
+      <Game poziom={poziom} />
     </SafeAreaView>
   );
 
