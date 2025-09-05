@@ -30,7 +30,7 @@ export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
     //TODO zmienić na grida bo fixed values mnie ugryzie w dupę
     <View className="flex h-full bg-red-400">
       <View className="h-[90] w-1/2 mx-auto pt-2">
-        <Text className="text-center text-7xl">{wpisanyWynik}</Text>
+        <Text className="text-center text-6xl">{wpisanyWynik}</Text>
       </View>
       <View className="w-[257] mx-auto flex flex-row gap-5 flex-wrap">
         <Pressable
@@ -39,7 +39,7 @@ export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
           }}
           className={styleButton}
         >
-          <Text className="text-7xl" selectable={false}>
+          <Text className="text-5xl" selectable={false}>
             1
           </Text>
         </Pressable>
@@ -49,7 +49,7 @@ export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
           }}
           className={styleButton}
         >
-          <Text className="text-7xl" selectable={false}>
+          <Text className="text-5xl" selectable={false}>
             2
           </Text>
         </Pressable>
@@ -59,7 +59,7 @@ export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
           }}
           className={styleButton}
         >
-          <Text className="text-7xl" selectable={false}>
+          <Text className="text-5xl" selectable={false}>
             3
           </Text>
         </Pressable>
@@ -69,7 +69,7 @@ export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
           }}
           className={styleButton}
         >
-          <Text className="text-7xl" selectable={false}>
+          <Text className="text-5xl" selectable={false}>
             4
           </Text>
         </Pressable>
@@ -79,7 +79,7 @@ export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
           }}
           className={styleButton}
         >
-          <Text className="text-7xl" selectable={false}>
+          <Text className="text-5xl" selectable={false}>
             5
           </Text>
         </Pressable>
@@ -89,7 +89,7 @@ export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
           }}
           className={styleButton}
         >
-          <Text className="text-7xl" selectable={false}>
+          <Text className="text-5xl" selectable={false}>
             6
           </Text>
         </Pressable>
@@ -99,7 +99,7 @@ export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
           }}
           className={styleButton}
         >
-          <Text className="text-7xl" selectable={false}>
+          <Text className="text-5xl" selectable={false}>
             7
           </Text>
         </Pressable>
@@ -109,7 +109,7 @@ export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
           }}
           className={styleButton}
         >
-          <Text className="text-7xl" selectable={false}>
+          <Text className="text-5xl" selectable={false}>
             8
           </Text>
         </Pressable>
@@ -119,7 +119,7 @@ export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
           }}
           className={styleButton}
         >
-          <Text className="text-7xl" selectable={false}>
+          <Text className="text-5xl" selectable={false}>
             9
           </Text>
         </Pressable>
@@ -129,7 +129,7 @@ export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
           }}
           className={styleButton}
         >
-          <Text className="text-7xl" selectable={false}>
+          <Text className="text-5xl" selectable={false}>
             0
           </Text>
         </Pressable>
@@ -139,7 +139,7 @@ export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
           }}
           className={styleButton}
         >
-          <Text className="text-7xl w-[132]" selectable={false}>
+          <Text className="text-5xl w-[132]" selectable={false}>
             ⤆
           </Text>
         </Pressable>

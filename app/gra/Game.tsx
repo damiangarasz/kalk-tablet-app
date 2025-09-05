@@ -1,23 +1,32 @@
 import { useState } from "react";
 import { View } from "react-native";
-import Klawiatura from "../UI/Klawiatura";
-import EkranZzadaniem from "./EkranZzadaniem";
-import TablicaWynikow from "./TablicaWynikw";
+import Klawiatura from "../UI/Klawiatura.tsx";
+import EkranZzadaniem from "./EkranZzadaniem.tsx";
+import TablicaWynikow from "./TablicaWynikw.tsx";
 
 export default function Game(props: { poziom: string }) {
   const [wpisanyWynik, setWpisanyWynik] = useState(0);
 
   const { poziom } = props;
 
-  //ustawia pięć zadań do wykonania
+  const [aktualneZadanie, setAktualneZadanie] = useState("?");
+  const [prawidlwoaOdpowiedz, setPrawidlowaOdpowiedz] = useState<number | null>(
+    null
+  );
 
   return (
     <View className="h-screen">
-      const l
-      <View className="h-[300]">
-        <EkranZzadaniem poziom={poziom} />
+      <View className="h-[150]">
+        <EkranZzadaniem
+          poziom={poziom}
+          aktualneZadanie={aktualneZadanie}
+          setAktualneZadanie={setAktualneZadanie}
+          prawidlwoaOdpowiedz={prawidlwoaOdpowiedz}
+          setPrawidlowaOdpowiedz={setPrawidlowaOdpowiedz}
+          wpisanyWynik={wpisanyWynik}
+        />
       </View>
-      <View className="h-[100]">
+      <View className="h-[65]">
         <TablicaWynikow />
       </View>
       <Klawiatura
