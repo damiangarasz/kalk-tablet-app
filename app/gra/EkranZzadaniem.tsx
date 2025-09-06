@@ -411,6 +411,7 @@ export default function EkranZzadaniem({
         setNoweZadanieSwitch((prev) => (prev ? false : true));
         setPoprawna("?");
         setCzyPoprawna("");
+        setWpisanyWynik(0);
       }, 3000);
       //KONIEC
 
@@ -420,6 +421,8 @@ export default function EkranZzadaniem({
     } else if (czyPoprawna == "poprawna") {
       //logika odpowiadająca za dodanie punktu do score i wylosowaniu kolejnego zadania
       console.log("poprawna");
+      setNoweZadanieSwitch((prev) => (prev ? false : true));
+      setWpisanyWynik(0);
       setCzyPoprawna("");
     }
   }, [czyPoprawna]);

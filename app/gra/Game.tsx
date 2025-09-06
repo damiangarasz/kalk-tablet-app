@@ -24,6 +24,7 @@ export default function Game(props: { poziom: string }) {
           prawidlwoaOdpowiedz={prawidlwoaOdpowiedz}
           setPrawidlowaOdpowiedz={setPrawidlowaOdpowiedz}
           wpisanyWynik={wpisanyWynik}
+          setWpisanyWynik={setWpisanyWynik}
         />
       </View>
       <View className="h-[65]">
