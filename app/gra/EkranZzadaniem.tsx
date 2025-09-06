@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
-import { jednoZadanie, propEkranZzadaniem, zadanie } from "../types";
+import { jednoZadanie, propEkranZzadaniem, zadanie } from "../types.ts";
 
 export default function EkranZzadaniem({
   poziom,
@@ -9,6 +9,7 @@ export default function EkranZzadaniem({
   prawidlwoaOdpowiedz,
   setPrawidlowaOdpowiedz,
   wpisanyWynik,
+  setWpisanyWynik,
 }: propEkranZzadaniem) {
   const [easy, setEasy] = useState<zadanie>([
     { dialanie: [2, "x", 2], waga: 1 },
@@ -291,7 +292,7 @@ export default function EkranZzadaniem({
 
   useEffect(() => {
     //funkcja losująca z tabliczki uwzględniająca wagę, sumuje każdą wagę a później wybiera losując między 0 a suma wszystkich wag i wypycha pierwsze zadanie które jest większe od wylosowanej liczby
-    console.log("dzoadziałam!!!!");
+
     function pickOne(tabliczka: zadanie) {
       let sum = 0;
       let accumulatedArray = [];
@@ -368,6 +369,7 @@ export default function EkranZzadaniem({
   }, [wpisanyWynik]);
 
   const [red, setRed] = useState(0);
+  const [poprawna, setPoprawna] = useState("?");
 
   useEffect(() => {
     if (czyPoprawna == "") {
@@ -391,12 +393,23 @@ export default function EkranZzadaniem({
       }
       redAnimate();
 
-      //KONIEC
+      //ustawienie poprawnej odpowiedzi
 
-      //logika odpowiedzialna za losowanie kolejnego zadania
+      setPoprawna(() => {
+        if (prawidlwoaOdpowiedz) {
+          return prawidlwoaOdpowiedz.toString();
+        } else {
+          return "?";
+        }
+      });
+
+      //KONIEC
+      console.log("setWpisanyWynik:", typeof setWpisanyWynik, wpisanyWynik);
+
+      //logika odpowiedzialna za losowanie kolejnego zadania i pokazanie "?"
       const idSetTimeOut = setTimeout(() => {
         setNoweZadanieSwitch((prev) => (prev ? false : true));
-        console.log("żyjesz?");
+        setPoprawna("?");
         setCzyPoprawna("");
       }, 3000);
       //KONIEC
@@ -421,8 +434,10 @@ export default function EkranZzadaniem({
           {aktualneZadanie}
         </Text>
       </View>
-      <View className="w-1/2 m-auto text-center text-2xl">
-        <Text></Text>
+      <View className="w-1/2 m-auto text-center ">
+        <Text className="w-1/2 m-auto text-center text-7xl text-green-600 ">
+          {poprawna}
+        </Text>
       </View>
     </View>
   );

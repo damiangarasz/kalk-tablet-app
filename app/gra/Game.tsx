@@ -32,6 +32,7 @@ export default function Game(props: { poziom: string }) {
       <Klawiatura
         setWpisanyWynik={setWpisanyWynik}
         wpisanyWynik={wpisanyWynik}
+        prawidlwoaOdpowiedz={prawidlwoaOdpowiedz}
       />
     </View>
   );

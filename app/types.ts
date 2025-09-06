@@ -10,3 +10,9 @@ export type propEkranZzadaniem = {
   setPrawidlowaOdpowiedz: React.Dispatch<React.SetStateAction<number | null>>;
   wpisanyWynik: number;
 };
+
+export type typKlawiatura = {
+  setWpisanyWynik: React.Dispatch<React.SetStateAction<number>>;
+  wpisanyWynik: number;
+  prawidlwoaOdpowiedz: number | null;
+};

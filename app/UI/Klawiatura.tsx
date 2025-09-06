@@ -1,11 +1,11 @@
 import { Pressable, Text, View } from "react-native";
+import { typKlawiatura } from "../types.ts";
 
-type lolTyp = {
-  setWpisanyWynik: React.Dispatch<React.SetStateAction<number>>;
-  wpisanyWynik: number;
-};
-
-export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
+export default function Klawiatura({
+  setWpisanyWynik,
+  wpisanyWynik,
+  prawidlwoaOdpowiedz,
+}: typKlawiatura) {
   function click(x: number | string) {
     setWpisanyWynik((y) => {
       if (x == 0 && y == 0) {
@@ -17,6 +17,12 @@ export default function Klawiatura({ setWpisanyWynik, wpisanyWynik }: lolTyp) {
         return Number(slice);
       } else if (x == "69") {
         return 0;
+      } else if (
+        prawidlwoaOdpowiedz &&
+        wpisanyWynik &&
+        prawidlwoaOdpowiedz.toString().length <= wpisanyWynik.toString().length
+      ) {
+        return y;
       } else {
         const add = `${y}${x}`;
         return Number(add);
