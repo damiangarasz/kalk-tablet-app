@@ -13,6 +13,8 @@ export default function Game(props: { poziom: string }) {
   const [prawidlwoaOdpowiedz, setPrawidlowaOdpowiedz] = useState<number | null>(
     null
   );
+  const [counterPositive, setCounterPositive] = useState(0);
+  const [counterNegative, setCounterNegative] = useState(0);
 
   return (
     <View className="h-screen">
@@ -25,10 +27,18 @@ export default function Game(props: { poziom: string }) {
           setPrawidlowaOdpowiedz={setPrawidlowaOdpowiedz}
           wpisanyWynik={wpisanyWynik}
           setWpisanyWynik={setWpisanyWynik}
+          setCounterPositive={setCounterPositive}
+          setCounterNegative={setCounterNegative}
         />
       </View>
       <View className="h-[65]">
-        <TablicaWynikow />
+        <TablicaWynikow
+          counterPositive={counterPositive}
+          counterNegative={counterNegative}
+          setCounterPositive={setCounterPositive}
+          setCounterNegative={setCounterNegative}
+          poziom={poziom}
+        />
       </View>
       <Klawiatura
         setWpisanyWynik={setWpisanyWynik}

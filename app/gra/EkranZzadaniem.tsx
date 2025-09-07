@@ -10,6 +10,8 @@ export default function EkranZzadaniem({
   setPrawidlowaOdpowiedz,
   wpisanyWynik,
   setWpisanyWynik,
+  setCounterPositive,
+  setCounterNegative,
 }: propEkranZzadaniem) {
   const [easy, setEasy] = useState<zadanie>([
     { dialanie: [2, "x", 2], waga: 1 },
@@ -412,6 +414,7 @@ export default function EkranZzadaniem({
         setPoprawna("?");
         setCzyPoprawna("");
         setWpisanyWynik(0);
+        setCounterNegative((y) => (y += 1));
       }, 3000);
       //KONIEC
 
@@ -420,6 +423,7 @@ export default function EkranZzadaniem({
       };
     } else if (czyPoprawna == "poprawna") {
       //logika odpowiadająca za dodanie punktu do score i wylosowaniu kolejnego zadania
+      setCounterPositive((y) => (y += 1));
       console.log("poprawna");
       setNoweZadanieSwitch((prev) => (prev ? false : true));
       setWpisanyWynik(0);

@@ -37,6 +37,11 @@ export default function PoziomTrudnosci({
           Hard
         </Text>
       </Pressable>
+      <Pressable className={button} onPress={() => press("hard")}>
+        <Text selectable={false} className={menuText}>
+          Adaptive (soon)
+        </Text>
+      </Pressable>
     </View>
   );
 }

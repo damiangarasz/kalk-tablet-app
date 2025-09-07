@@ -38,117 +38,139 @@ export default function Klawiatura({
       <View className="h-[90] w-1/2 mx-auto pt-2">
         <Text className="text-center text-6xl">{wpisanyWynik}</Text>
       </View>
-      <View className="w-[257] mx-auto flex flex-row gap-5 flex-wrap">
-        <Pressable
-          onPress={() => {
-            click(1);
-          }}
-          className={styleButton}
-        >
-          <Text className="text-5xl" selectable={false}>
-            1
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            click(2);
-          }}
-          className={styleButton}
-        >
-          <Text className="text-5xl" selectable={false}>
-            2
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            click(3);
-          }}
-          className={styleButton}
-        >
-          <Text className="text-5xl" selectable={false}>
-            3
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            click(4);
-          }}
-          className={styleButton}
-        >
-          <Text className="text-5xl" selectable={false}>
-            4
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            click(5);
-          }}
-          className={styleButton}
-        >
-          <Text className="text-5xl" selectable={false}>
-            5
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            click(6);
-          }}
-          className={styleButton}
-        >
-          <Text className="text-5xl" selectable={false}>
-            6
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            click(7);
-          }}
-          className={styleButton}
-        >
-          <Text className="text-5xl" selectable={false}>
-            7
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            click(8);
-          }}
-          className={styleButton}
-        >
-          <Text className="text-5xl" selectable={false}>
-            8
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            click(9);
-          }}
-          className={styleButton}
-        >
-          <Text className="text-5xl" selectable={false}>
-            9
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            click(0);
-          }}
-          className={styleButton}
-        >
-          <Text className="text-5xl" selectable={false}>
-            0
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            click("69");
-          }}
-          className={styleButton}
-        >
-          <Text className="text-5xl w-[132]" selectable={false}>
-            ⤆
-          </Text>
-        </Pressable>
+      <View className="w-3/4 h-full mx-auto flex-row flex-wrap gap-2">
+        <View className="w-[30%]">
+          <Pressable
+            onPress={() => {
+              click(1);
+            }}
+            className={styleButton}
+          >
+            <Text className="text-5xl text-center" selectable={false}>
+              1
+            </Text>
+          </Pressable>
+        </View>
+        <View className="w-[30%]">
+          <Pressable
+            onPress={() => {
+              click(2);
+            }}
+            className={styleButton}
+          >
+            <Text className="text-5xl text-center" selectable={false}>
+              2
+            </Text>
+          </Pressable>
+        </View>
+        <View className="w-[30%]">
+          <Pressable
+            onPress={() => {
+              click(3);
+            }}
+            className={styleButton}
+          >
+            <Text className="text-5xl text-center" selectable={false}>
+              3
+            </Text>
+          </Pressable>
+        </View>
+        <View className="w-[30%]">
+          <Pressable
+            onPress={() => {
+              click(4);
+            }}
+            className={styleButton}
+          >
+            <Text className="text-5xl text-center" selectable={false}>
+              4
+            </Text>
+          </Pressable>
+        </View>
+        <View className="w-[30%]">
+          <Pressable
+            onPress={() => {
+              click(5);
+            }}
+            className={styleButton}
+          >
+            <Text className="text-5xl text-center" selectable={false}>
+              5
+            </Text>
+          </Pressable>
+        </View>
+        <View className="w-[30%]">
+          <Pressable
+            onPress={() => {
+              click(6);
+            }}
+            className={styleButton}
+          >
+            <Text className="text-5xl text-center" selectable={false}>
+              6
+            </Text>
+          </Pressable>
+        </View>
+        <View className="w-[30%]">
+          <Pressable
+            onPress={() => {
+              click(7);
+            }}
+            className={styleButton}
+          >
+            <Text className="text-5xl text-center" selectable={false}>
+              7
+            </Text>
+          </Pressable>
+        </View>
+        <View className="w-[30%]">
+          <Pressable
+            onPress={() => {
+              click(8);
+            }}
+            className={styleButton}
+          >
+            <Text className="text-5xl text-center" selectable={false}>
+              8
+            </Text>
+          </Pressable>
+        </View>
+        <View className="w-[30%]">
+          <Pressable
+            onPress={() => {
+              click(9);
+            }}
+            className={styleButton}
+          >
+            <Text className="text-5xl text-center" selectable={false}>
+              9
+            </Text>
+          </Pressable>
+        </View>
+        <View className="w-[30%]">
+          <Pressable
+            onPress={() => {
+              click(0);
+            }}
+            className={styleButton}
+          >
+            <Text className="text-5xl text-center" selectable={false}>
+              0
+            </Text>
+          </Pressable>
+        </View>
+        <View className="w-[60%]">
+          <Pressable
+            onPress={() => {
+              click("69");
+            }}
+            className={styleButton}
+          >
+            <Text className="text-5xl w-[132]" selectable={false}>
+              ⤆
+            </Text>
+          </Pressable>
+        </View>
       </View>
     </View>
   );
