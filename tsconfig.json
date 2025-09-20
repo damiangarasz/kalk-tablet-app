@@ -5,6 +5,7 @@
     "paths": {
       "@/*": ["./*"]
     },
+    "jsx": "react-jsx",
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "allowImportingTsExtensions": true
