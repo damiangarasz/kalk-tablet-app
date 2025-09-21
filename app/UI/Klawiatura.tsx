@@ -31,15 +31,14 @@ export default function Klawiatura({
   }
 
   const styleButton =
-    "w-18 bg-blue-500 py-2 px-4 rounded-lg active:bg-blue-600 shadow-md";
+    "w-18 bg-blue-500 py-2 px-4 rounded-full active:bg-blue-600 shadow-md";
   return (
-    //TODO zmienić na grida bo fixed values mnie ugryzie w dupę
     <View className="flex h-full bg-red-400">
       <View className="h-[90] w-1/2 mx-auto pt-2">
         <Text className="text-center text-6xl">{wpisanyWynik}</Text>
       </View>
       <View className="w-3/4 h-full mx-auto flex-row flex-wrap gap-2">
-        <View className="w-[30%]">
+        <View className="w-30 h-10">
           <Pressable
             onPress={() => {
               click(1);
