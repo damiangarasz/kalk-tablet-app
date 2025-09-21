@@ -4,7 +4,7 @@ import {
   StackNavigationProp,
 } from "@react-navigation/stack";
 import { useEffect, useState } from "react";
-import { Pressable, Text, View } from "react-native";
+import { ImageBackground, Pressable, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import "./globals.css";
 import Game from "./gra/Game";
@@ -35,21 +35,50 @@ export default function Index() {
     const navigation = useNavigation<MenuScreenNavigationProp>();
 
     const menuText = "text-center text-7xl font-bold text-[#f4511e]";
+    const stylePrassable = "border border-[#8e6f6fff]";
     return (
-      <View className="w-[500] m-auto text-center gap-10">
-        <Pressable onPress={() => navigation.navigate("App")}>
-          <Text selectable={false} className={menuText}>
-            Exercise
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => navigation.navigate("PoziomTrudnosci", { setPoziom })}
-        >
-          <Text selectable={false} className={menuText}>
-            Level
-          </Text>
-        </Pressable>
-      </View>
+      <ImageBackground source={require("./src/bg/bg.png")}>
+        <View className="w-[75%] m-auto text-center gap-10">
+          <Pressable
+            className={stylePrassable}
+            onPress={() => navigation.navigate("App")}
+          >
+            <Text selectable={false} className={menuText}>
+              Exercise
+            </Text>
+          </Pressable>
+          <Pressable
+            className={stylePrassable}
+            onPress={() =>
+              navigation.navigate("PoziomTrudnosci", { setPoziom })
+            }
+          >
+            <Text selectable={false} className={menuText}>
+              Level
+            </Text>
+          </Pressable>
+          <Pressable
+            className={stylePrassable}
+            onPress={() =>
+              navigation.navigate("PoziomTrudnosci", { setPoziom })
+            }
+          >
+            <Text selectable={false} className={menuText}>
+              Challenges <span className="text-3xl text-white">(soon)</span>
+            </Text>
+          </Pressable>
+          <Pressable
+            className={stylePrassable}
+            onPress={() =>
+              navigation.navigate("PoziomTrudnosci", { setPoziom })
+            }
+          >
+            <Text selectable={false} className={menuText}>
+              Laderboards <span className="text-3xl text-white">(soon)</span>
+            </Text>
+          </Pressable>
+        </View>
+      </ImageBackground>
     );
   };
 
