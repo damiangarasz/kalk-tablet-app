@@ -13,73 +13,82 @@ export default function EkranZzadaniem({
   setCounterPositive,
   setCounterNegative,
 }: propEkranZzadaniem) {
+  // const [easy, setEasy] = useState<zadanie>([
+  //   { dialanie: [2, "x", 2], waga: 1 },
+  //   { dialanie: [2, "x", 3], waga: 1 },
+  //   { dialanie: [2, "x", 4], waga: 1 },
+  //   { dialanie: [2, "x", 5], waga: 1 },
+  //   { dialanie: [2, "x", 6], waga: 1 },
+  //   { dialanie: [2, "x", 7], waga: 1 },
+  //   { dialanie: [2, "x", 8], waga: 1 },
+  //   { dialanie: [2, "x", 9], waga: 1 },
+  //   { dialanie: [2, "x", 10], waga: 1 },
+  //   { dialanie: [2, "x", 11], waga: 1 },
+  //   { dialanie: [2, "x", 12], waga: 1 },
+  //   { dialanie: [3, "x", 3], waga: 1 },
+  //   { dialanie: [3, "x", 4], waga: 0.7 },
+  //   { dialanie: [3, "x", 5], waga: 1 },
+  //   { dialanie: [3, "x", 6], waga: 0.7 },
+  //   { dialanie: [3, "x", 7], waga: 0.7 },
+  //   { dialanie: [3, "x", 8], waga: 0.7 },
+  //   { dialanie: [3, "x", 9], waga: 0.7 },
+  //   { dialanie: [3, "x", 10], waga: 1 },
+  //   { dialanie: [3, "x", 11], waga: 1 },
+  //   { dialanie: [3, "x", 12], waga: 0.5 },
+  //   { dialanie: [4, "x", 4], waga: 1 },
+  //   { dialanie: [4, "x", 5], waga: 1 },
+  //   { dialanie: [4, "x", 6], waga: 1 },
+  //   { dialanie: [4, "x", 7], waga: 0.5 },
+  //   { dialanie: [4, "x", 8], waga: 0.5 },
+  //   { dialanie: [4, "x", 9], waga: 0.5 },
+  //   { dialanie: [4, "x", 10], waga: 1 },
+  //   { dialanie: [4, "x", 11], waga: 1 },
+  //   { dialanie: [4, "x", 12], waga: 0.5 },
+  //   { dialanie: [5, "x", 5], waga: 1 },
+  //   { dialanie: [5, "x", 6], waga: 0.7 },
+  //   { dialanie: [5, "x", 7], waga: 0.5 },
+  //   { dialanie: [5, "x", 8], waga: 0.7 },
+  //   { dialanie: [5, "x", 9], waga: 0.5 },
+  //   { dialanie: [5, "x", 10], waga: 1 },
+  //   { dialanie: [5, "x", 11], waga: 1 },
+  //   { dialanie: [5, "x", 12], waga: 0.5 },
+  //   { dialanie: [6, "x", 6], waga: 1 },
+  //   { dialanie: [6, "x", 7], waga: 0.5 },
+  //   { dialanie: [6, "x", 8], waga: 0.2 },
+  //   { dialanie: [6, "x", 9], waga: 0.2 },
+  //   { dialanie: [6, "x", 10], waga: 1 },
+  //   { dialanie: [6, "x", 11], waga: 1 },
+  //   { dialanie: [6, "x", 12], waga: 0.2 },
+  //   { dialanie: [7, "x", 7], waga: 0.5 },
+  //   { dialanie: [7, "x", 8], waga: 0.2 },
+  //   { dialanie: [7, "x", 9], waga: 0.2 },
+  //   { dialanie: [7, "x", 10], waga: 1 },
+  //   { dialanie: [7, "x", 11], waga: 1 },
+  //   { dialanie: [7, "x", 12], waga: 0 },
+  //   { dialanie: [8, "x", 8], waga: 0.2 },
+  //   { dialanie: [8, "x", 9], waga: 0.2 },
+  //   { dialanie: [8, "x", 10], waga: 1 },
+  //   { dialanie: [8, "x", 11], waga: 1 },
+  //   { dialanie: [8, "x", 12], waga: 0 },
+  //   { dialanie: [9, "x", 9], waga: 0.2 },
+  //   { dialanie: [9, "x", 10], waga: 1 },
+  //   { dialanie: [9, "x", 11], waga: 1 },
+  //   { dialanie: [9, "x", 12], waga: 0 },
+  //   { dialanie: [10, "x", 10], waga: 1 },
+  //   { dialanie: [10, "x", 11], waga: 1 },
+  //   { dialanie: [10, "x", 12], waga: 1 },
+  //   { dialanie: [11, "x", 11], waga: 0 },
+  //   { dialanie: [11, "x", 12], waga: 0 },
+  //   { dialanie: [12, "x", 12], waga: 0 },
+  // ]);
+
+  //test case
+
   const [easy, setEasy] = useState<zadanie>([
     { dialanie: [2, "x", 2], waga: 1 },
     { dialanie: [2, "x", 3], waga: 1 },
     { dialanie: [2, "x", 4], waga: 1 },
-    { dialanie: [2, "x", 5], waga: 1 },
-    { dialanie: [2, "x", 6], waga: 1 },
-    { dialanie: [2, "x", 7], waga: 1 },
-    { dialanie: [2, "x", 8], waga: 1 },
-    { dialanie: [2, "x", 9], waga: 1 },
-    { dialanie: [2, "x", 10], waga: 1 },
-    { dialanie: [2, "x", 11], waga: 1 },
-    { dialanie: [2, "x", 12], waga: 1 },
-    { dialanie: [3, "x", 3], waga: 1 },
-    { dialanie: [3, "x", 4], waga: 0.7 },
-    { dialanie: [3, "x", 5], waga: 1 },
-    { dialanie: [3, "x", 6], waga: 0.7 },
-    { dialanie: [3, "x", 7], waga: 0.7 },
-    { dialanie: [3, "x", 8], waga: 0.7 },
-    { dialanie: [3, "x", 9], waga: 0.7 },
-    { dialanie: [3, "x", 10], waga: 1 },
-    { dialanie: [3, "x", 11], waga: 1 },
-    { dialanie: [3, "x", 12], waga: 0.5 },
-    { dialanie: [4, "x", 4], waga: 1 },
-    { dialanie: [4, "x", 5], waga: 1 },
-    { dialanie: [4, "x", 6], waga: 1 },
-    { dialanie: [4, "x", 7], waga: 0.5 },
-    { dialanie: [4, "x", 8], waga: 0.5 },
-    { dialanie: [4, "x", 9], waga: 0.5 },
-    { dialanie: [4, "x", 10], waga: 1 },
-    { dialanie: [4, "x", 11], waga: 1 },
-    { dialanie: [4, "x", 12], waga: 0.5 },
-    { dialanie: [5, "x", 5], waga: 1 },
-    { dialanie: [5, "x", 6], waga: 0.7 },
-    { dialanie: [5, "x", 7], waga: 0.5 },
-    { dialanie: [5, "x", 8], waga: 0.7 },
-    { dialanie: [5, "x", 9], waga: 0.5 },
-    { dialanie: [5, "x", 10], waga: 1 },
-    { dialanie: [5, "x", 11], waga: 1 },
-    { dialanie: [5, "x", 12], waga: 0.5 },
-    { dialanie: [6, "x", 6], waga: 1 },
-    { dialanie: [6, "x", 7], waga: 0.5 },
-    { dialanie: [6, "x", 8], waga: 0.2 },
-    { dialanie: [6, "x", 9], waga: 0.2 },
-    { dialanie: [6, "x", 10], waga: 1 },
-    { dialanie: [6, "x", 11], waga: 1 },
-    { dialanie: [6, "x", 12], waga: 0.2 },
-    { dialanie: [7, "x", 7], waga: 0.5 },
-    { dialanie: [7, "x", 8], waga: 0.2 },
-    { dialanie: [7, "x", 9], waga: 0.2 },
-    { dialanie: [7, "x", 10], waga: 1 },
-    { dialanie: [7, "x", 11], waga: 1 },
-    { dialanie: [7, "x", 12], waga: 0 },
-    { dialanie: [8, "x", 8], waga: 0.2 },
-    { dialanie: [8, "x", 9], waga: 0.2 },
-    { dialanie: [8, "x", 10], waga: 1 },
-    { dialanie: [8, "x", 11], waga: 1 },
-    { dialanie: [8, "x", 12], waga: 0 },
-    { dialanie: [9, "x", 9], waga: 0.2 },
-    { dialanie: [9, "x", 10], waga: 1 },
-    { dialanie: [9, "x", 11], waga: 1 },
-    { dialanie: [9, "x", 12], waga: 0 },
-    { dialanie: [10, "x", 10], waga: 1 },
-    { dialanie: [10, "x", 11], waga: 1 },
-    { dialanie: [10, "x", 12], waga: 1 },
-    { dialanie: [11, "x", 11], waga: 0 },
-    { dialanie: [11, "x", 12], waga: 0 },
-    { dialanie: [12, "x", 12], waga: 0 },
+    { dialanie: [2, "x", 1], waga: 1 },
   ]);
 
   const [medium, setMedium] = useState([
@@ -344,7 +353,9 @@ export default function EkranZzadaniem({
 
   //logika która pilnuje wpipsanych liczb przez klawiaturę
   useEffect(() => {
-    if (
+    if (wpisanyWynik == 0) {
+      return;
+    } else if (
       prawidlwoaOdpowiedz &&
       wpisanyWynik.toString().length > prawidlwoaOdpowiedz.toString().length
     ) {
@@ -357,6 +368,7 @@ export default function EkranZzadaniem({
       wpisanyWynik != prawidlwoaOdpowiedz
     ) {
       //logika kiedy ilość cyfr się zgadza ale liczby nie sa sobie równe
+      console.log("tutaj", wpisanyWynik, prawidlwoaOdpowiedz);
       setCzyPoprawna("niepoprawna");
     } else if (
       prawidlwoaOdpowiedz &&
@@ -366,7 +378,7 @@ export default function EkranZzadaniem({
       //logika kiedy ilość cyfr się zgadza i liczby sa sobie równe
       setCzyPoprawna("poprawna");
     } else {
-      console.log("kupa");
+      console.log("else we wpisywaniu poprawnej odpowiedzi");
     }
   }, [wpisanyWynik]);
 
@@ -406,7 +418,6 @@ export default function EkranZzadaniem({
       });
 
       //KONIEC
-      console.log("setWpisanyWynik:", typeof setWpisanyWynik, wpisanyWynik);
 
       //logika odpowiedzialna za losowanie kolejnego zadania i pokazanie "?"
       const idSetTimeOut = setTimeout(() => {
@@ -424,7 +435,6 @@ export default function EkranZzadaniem({
     } else if (czyPoprawna == "poprawna") {
       //logika odpowiadająca za dodanie punktu do score i wylosowaniu kolejnego zadania
       setCounterPositive((y) => (y += 1));
-      console.log("poprawna");
       setNoweZadanieSwitch((prev) => (prev ? false : true));
       setWpisanyWynik(0);
       setCzyPoprawna("");
