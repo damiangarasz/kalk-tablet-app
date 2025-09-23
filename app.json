@@ -17,7 +17,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.damiangarasz.kalktabletapp"
+      "package": "com.damiangarasz.mathwizard"
     },
     "web": {
       "bundler": "metro",
