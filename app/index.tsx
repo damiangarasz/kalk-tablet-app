@@ -27,7 +27,13 @@ export default function Index() {
 
   const App = () => (
     <SafeAreaView>
-      <Game poziom={poziom} />
+      <Game poziom={poziom} tryb="normal" />
+    </SafeAreaView>
+  );
+
+  const Challenge = () => (
+    <SafeAreaView>
+      <Game poziom={poziom} tryb="challenge" />
     </SafeAreaView>
   );
 
@@ -59,12 +65,10 @@ export default function Index() {
           </Pressable>
           <Pressable
             className={stylePrassable}
-            onPress={() =>
-              navigation.navigate("PoziomTrudnosci", { setPoziom })
-            }
+            onPress={() => navigation.navigate("Challenge")}
           >
             <Text selectable={false} className={menuText}>
-              Challenges <span className="text-3xl text-white">(soon)</span>
+              Challenges
             </Text>
           </Pressable>
           <Pressable
@@ -138,6 +142,21 @@ export default function Index() {
             </SafeAreaView>
           )}
         </Stack.Screen>
+        <Stack.Screen
+          name="Challenge"
+          component={Challenge}
+          options={{
+            title: "Challenge",
+            headerTitleAlign: "center",
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
       </Stack.Navigator>
     </SafeAreaProvider>
   );

@@ -12,6 +12,7 @@ export default function EkranZzadaniem({
   setWpisanyWynik,
   setCounterPositive,
   setCounterNegative,
+  tryb,
 }: propEkranZzadaniem) {
   const [easy, setEasy] = useState<zadanie>([
     { dialanie: [2, "x", 2], waga: 1 },
@@ -409,10 +410,13 @@ export default function EkranZzadaniem({
       });
 
       //KONIEC
-
       //logika odpowiedzialna za losowanie kolejnego zadania i pokazanie "?"
       const idSetTimeOut = setTimeout(() => {
-        setNoweZadanieSwitch((prev) => (prev ? false : true));
+        //logika która sprawdza jakiego typu mamy gra, normal czy challenge
+
+        if (tryb == "normal") {
+          setNoweZadanieSwitch((prev) => (prev ? false : true));
+        }
         setPoprawna("?");
         setCzyPoprawna("");
         setWpisanyWynik(0);

@@ -12,6 +12,7 @@ export type propEkranZzadaniem = {
   setWpisanyWynik: React.Dispatch<React.SetStateAction<number>>;
   setCounterPositive: React.Dispatch<React.SetStateAction<number>>;
   setCounterNegative: React.Dispatch<React.SetStateAction<number>>;
+  tryb: string;
 };
 
 export type typKlawiatura = {
