@@ -13,6 +13,8 @@ export default function EkranZzadaniem({
   setCounterPositive,
   setCounterNegative,
   tryb,
+  setLicznikPoprawnychChallenge,
+  setChallengeEnd,
 }: propEkranZzadaniem) {
   const [easy, setEasy] = useState<zadanie>([
     { dialanie: [2, "x", 2], waga: 1 },
@@ -360,7 +362,6 @@ export default function EkranZzadaniem({
       wpisanyWynik != prawidlwoaOdpowiedz
     ) {
       //logika kiedy ilość cyfr się zgadza ale liczby nie sa sobie równe
-      console.log("tutaj", wpisanyWynik, prawidlwoaOdpowiedz);
       setCzyPoprawna("niepoprawna");
     } else if (
       prawidlwoaOdpowiedz &&
@@ -416,8 +417,10 @@ export default function EkranZzadaniem({
 
         if (tryb == "normal") {
           setNoweZadanieSwitch((prev) => (prev ? false : true));
+          setPoprawna("?");
         }
-        setPoprawna("?");
+        console.log(setChallengeEnd(true));
+        setPoprawna("Game Over");
         setCzyPoprawna("");
         setWpisanyWynik(0);
         setCounterNegative((y) => (y += 1));
@@ -433,6 +436,7 @@ export default function EkranZzadaniem({
       setNoweZadanieSwitch((prev) => (prev ? false : true));
       setWpisanyWynik(0);
       setCzyPoprawna("");
+      setLicznikPoprawnychChallenge((y) => (y += 1));
     }
   }, [czyPoprawna]);
 
@@ -440,14 +444,14 @@ export default function EkranZzadaniem({
     <View>
       <View>
         <Text
-          className={`w-1/2 m-auto text-center text-7xl`}
+          className={`w-[100%] m-auto text-center text-7xl`}
           style={{ color: `rgb(${red}, 0, 0)` }}
         >
           {aktualneZadanie}
         </Text>
       </View>
-      <View className="w-1/2 m-auto text-center ">
-        <Text className="w-1/2 m-auto text-center text-7xl text-green-600 ">
+      <View className="w-[100%] m-auto text-center ">
+        <Text className="w-[90%] m-auto text-center text-7xl text-green-600 ">
           {poprawna}
         </Text>
       </View>

@@ -17,6 +17,10 @@ export default function Game(props: { poziom: string; tryb: string }) {
   const [counterPositive, setCounterPositive] = useState(0);
   const [counterNegative, setCounterNegative] = useState(0);
 
+  const [licznikPoprawnychChallenge, setLicznikPoprawnychChallenge] =
+    useState(0);
+  const [challengeEnd, setChallengeEnd] = useState(false);
+
   const lol = () => {
     if (tryb == "normal") {
       return (
@@ -31,9 +35,14 @@ export default function Game(props: { poziom: string; tryb: string }) {
         </View>
       );
     } else if (tryb == "challenge") {
-      <View className="h-[65]">
-        <Challenge />
-      </View>;
+      return (
+        <View className="h-[65]">
+          <Challenge
+            licznikPoprawnychChallenge={licznikPoprawnychChallenge}
+            challengeEnd={challengeEnd}
+          />
+        </View>
+      );
     }
   };
 
@@ -50,6 +59,9 @@ export default function Game(props: { poziom: string; tryb: string }) {
           setWpisanyWynik={setWpisanyWynik}
           setCounterPositive={setCounterPositive}
           setCounterNegative={setCounterNegative}
+          tryb={tryb}
+          setLicznikPoprawnychChallenge={setLicznikPoprawnychChallenge}
+          setChallengeEnd={setChallengeEnd}
         />
       </View>
       {lol()}
@@ -57,6 +69,7 @@ export default function Game(props: { poziom: string; tryb: string }) {
         setWpisanyWynik={setWpisanyWynik}
         wpisanyWynik={wpisanyWynik}
         prawidlwoaOdpowiedz={prawidlwoaOdpowiedz}
+        challengeEnd={challengeEnd}
       />
     </View>
   );

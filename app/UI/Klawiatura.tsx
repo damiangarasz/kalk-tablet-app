@@ -5,10 +5,13 @@ export default function Klawiatura({
   setWpisanyWynik,
   wpisanyWynik,
   prawidlwoaOdpowiedz,
+  challengeEnd,
 }: typKlawiatura) {
   function click(x: number | string) {
     setWpisanyWynik((y) => {
       if (x == 0 && y == 0) {
+        return 0;
+      } else if (challengeEnd == true) {
         return 0;
       } else if (x == "69" && y != 0) {
         const string = y.toString();
