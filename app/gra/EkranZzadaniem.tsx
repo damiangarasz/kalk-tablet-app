@@ -15,6 +15,10 @@ export default function EkranZzadaniem({
   tryb,
   setLicznikPoprawnychChallenge,
   setChallengeEnd,
+  setPoprawna,
+  poprawna,
+  noweZadanieSwitch,
+  setNoweZadanieSwitch,
 }: propEkranZzadaniem) {
   const [easy, setEasy] = useState<zadanie>([
     { dialanie: [2, "x", 2], waga: 1 },
@@ -293,7 +297,7 @@ export default function EkranZzadaniem({
   ]);
 
   const [czyPoprawna, setCzyPoprawna] = useState("");
-  const [noweZadanieSwitch, setNoweZadanieSwitch] = useState(true);
+  // const [noweZadanieSwitch, setNoweZadanieSwitch] = useState(true);
 
   useEffect(() => {
     //funkcja losująca z tabliczki uwzględniająca wagę, sumuje każdą wagę a później wybiera losując między 0 a suma wszystkich wag i wypycha pierwsze zadanie które jest większe od wylosowanej liczby
@@ -376,7 +380,7 @@ export default function EkranZzadaniem({
   }, [wpisanyWynik]);
 
   const [red, setRed] = useState(0);
-  const [poprawna, setPoprawna] = useState("?");
+  // const [poprawna, setPoprawna] = useState("?");
 
   useEffect(() => {
     if (czyPoprawna == "") {
@@ -418,12 +422,14 @@ export default function EkranZzadaniem({
         if (tryb == "normal") {
           setNoweZadanieSwitch((prev) => (prev ? false : true));
           setPoprawna("?");
+          setCounterNegative((y) => (y += 1));
+          setWpisanyWynik(0);
+        } else if (tryb == "challenge") {
+          setChallengeEnd(true);
+          setPoprawna("Game Over");
+          setCzyPoprawna("");
+          setWpisanyWynik(0);
         }
-        console.log(setChallengeEnd(true));
-        setPoprawna("Game Over");
-        setCzyPoprawna("");
-        setWpisanyWynik(0);
-        setCounterNegative((y) => (y += 1));
       }, 3000);
       //KONIEC
 
@@ -444,6 +450,7 @@ export default function EkranZzadaniem({
     <View>
       <View>
         <Text
+          selectable={false}
           className={`w-[100%] m-auto text-center text-7xl`}
           style={{ color: `rgb(${red}, 0, 0)` }}
         >
@@ -451,7 +458,10 @@ export default function EkranZzadaniem({
         </Text>
       </View>
       <View className="w-[100%] m-auto text-center ">
-        <Text className="w-[90%] m-auto text-center text-7xl text-green-600 ">
+        <Text
+          selectable={false}
+          className="w-[90%] m-auto text-center text-7xl text-green-600 "
+        >
           {poprawna}
         </Text>
       </View>

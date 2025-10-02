@@ -3,7 +3,14 @@ import { Pressable, Text, View } from "react-native";
 import { propsChallenge } from "../types";
 
 export default function Challenge(props: propsChallenge) {
-  const { licznikPoprawnychChallenge, challengeEnd, setChallengeEnd } = props;
+  const {
+    licznikPoprawnychChallenge,
+    challengeEnd,
+    setChallengeEnd,
+    setPoprawna,
+    setNoweZadanieSwitch,
+    setLicznikPoprawnychChallenge,
+  } = props;
   //zegar odliczania do startu i do zakończenia zadanie
   const [timer, setTimer] = useState(5);
   const [startGame, setStartGame] = useState(false);
@@ -16,7 +23,10 @@ export default function Challenge(props: propsChallenge) {
     const odliczanie = setInterval(() => {
       setTimer((x) => {
         //tutaj dodać ligikę zakończenia gry
-        if (x == 0) return 0;
+        if (x == 0) {
+          setChallengeEnd(true);
+          return 0;
+        }
         return x - 1;
       });
     }, 1000);
@@ -41,21 +51,50 @@ export default function Challenge(props: propsChallenge) {
   }, [timer]);
 
   function reset() {
-    console.log(setChallengeEnd);
+    setChallengeEnd(false);
+    setPoprawna("?");
+    console.log(setNoweZadanieSwitch);
+    setNoweZadanieSwitch((prev) => (prev ? false : true));
+    setLicznikPoprawnychChallenge(0);
   }
+
+  const [disable, setDisable] = useState(true);
+  const [restart, setRestart] = useState("rgb(120,120,120)");
+  useEffect(() => {
+    if (challengeEnd) {
+      setDisable(false);
+      setRestart("rgb(203, 194, 76)");
+    } else {
+      setDisable(true);
+      setRestart("rgb(120,120,120)");
+    }
+  }, [challengeEnd]);
 
   useEffect(() => {}, [timer]);
   return (
-    <View>
-      <Text>{zegar}</Text>
-      <Text>{licznikPoprawnychChallenge}</Text>
-      <Pressable
-        onPress={() => {
-          reset();
-        }}
-      >
-        <Text>Restart</Text>
-      </Pressable>
+    <View className="flex flex-row my-auto">
+      <Text className="w-[33%] text-center" selectable={false}>
+        {zegar}
+      </Text>
+      <Text className="w-[33%] text-center" selectable={false}>
+        {licznikPoprawnychChallenge}
+      </Text>
+      <View className="w-[33%]">
+        <Pressable
+          onPress={() => {
+            reset();
+          }}
+          disabled={disable}
+        >
+          <Text
+            style={{ backgroundColor: `${restart}` }}
+            className="text-center rounded-md w-[80%] mx-auto"
+            selectable={false}
+          >
+            Restart
+          </Text>
+        </Pressable>
+      </View>
     </View>
   );
 }

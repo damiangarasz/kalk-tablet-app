@@ -9,6 +9,7 @@ export type RootStackParamList = {
     setPoziom: Dispatch<SetStateAction<string>>;
   };
   Challenge: undefined;
+  Laderboards: undefined;
 };
 
 export type PoziomTrudnosciScreenProps = {

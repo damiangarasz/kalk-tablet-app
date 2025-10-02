@@ -15,6 +15,10 @@ export type propEkranZzadaniem = {
   tryb: string;
   setLicznikPoprawnychChallenge: React.Dispatch<React.SetStateAction<number>>;
   setChallengeEnd: React.Dispatch<React.SetStateAction<boolean>>;
+  setPoprawna: React.Dispatch<React.SetStateAction<string>>;
+  poprawna: string;
+  setNoweZadanieSwitch: React.Dispatch<React.SetStateAction<boolean>>;
+  noweZadanieSwitch: boolean;
 };
 
 export type typKlawiatura = {
@@ -36,4 +40,7 @@ export type propsChallenge = {
   licznikPoprawnychChallenge: number;
   challengeEnd: boolean;
   setChallengeEnd: React.Dispatch<React.SetStateAction<boolean>>;
+  setPoprawna: React.Dispatch<React.SetStateAction<string>>;
+  setNoweZadanieSwitch: React.Dispatch<React.SetStateAction<boolean>>;
+  setLicznikPoprawnychChallenge: React.Dispatch<React.SetStateAction<number>>;
 };

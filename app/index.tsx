@@ -8,6 +8,7 @@ import { ImageBackground, Pressable, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import "./globals.css";
 import Game from "./gra/Game";
+import Laderboards from "./gra/Laderboards.tsx";
 import { RootStackParamList } from "./RootTS";
 import PoziomTrudnosciUI from "./UI/PoziomTrudnosciUI";
 
@@ -37,14 +38,24 @@ export default function Index() {
     </SafeAreaView>
   );
 
+  const Lb = () => (
+    <SafeAreaView>
+      <Laderboards />
+    </SafeAreaView>
+  );
+
   const Menu = () => {
     const navigation = useNavigation<MenuScreenNavigationProp>();
 
-    const menuText = "text-center text-7xl font-bold text-[#f4511e]";
+    const menuText =
+      "h-[75] text-5xl font-bold text-[#f4511e] flex justify-center items-center";
     const stylePrassable = "border border-[#8e6f6fff]";
     return (
-      <ImageBackground source={require("./src/bg/bg.png")}>
-        <View className="w-[75%] m-auto text-center gap-10">
+      <ImageBackground
+        className="flex-auto"
+        source={require("./src/bg/bg.png")}
+      >
+        <View className="w-[75%] h-[100%] m-auto gap-10 justify-center">
           <Pressable
             className={stylePrassable}
             onPress={() => navigation.navigate("App")}
@@ -60,7 +71,7 @@ export default function Index() {
             }
           >
             <Text selectable={false} className={menuText}>
-              Level
+              Difficulty Level
             </Text>
           </Pressable>
           <Pressable
@@ -73,12 +84,10 @@ export default function Index() {
           </Pressable>
           <Pressable
             className={stylePrassable}
-            onPress={() =>
-              navigation.navigate("PoziomTrudnosci", { setPoziom })
-            }
+            onPress={() => navigation.navigate("Laderboards")}
           >
             <Text selectable={false} className={menuText}>
-              Laderboards <span className="text-3xl text-white">(soon)</span>
+              Laderboards
             </Text>
           </Pressable>
         </View>
@@ -147,6 +156,21 @@ export default function Index() {
           component={Challenge}
           options={{
             title: "Challenge",
+            headerTitleAlign: "center",
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Laderboards"
+          component={Lb}
+          options={{
+            title: "Laderboards",
             headerTitleAlign: "center",
             headerStyle: {
               backgroundColor: "#f4511e",

@@ -6,9 +6,11 @@ import EkranZzadaniem from "./EkranZzadaniem.tsx";
 import TablicaWynikow from "./TablicaWynikw.tsx";
 
 export default function Game(props: { poziom: string; tryb: string }) {
-  const [wpisanyWynik, setWpisanyWynik] = useState(0);
-
   const { poziom, tryb } = props;
+
+  const [wpisanyWynik, setWpisanyWynik] = useState(0);
+  const [poprawna, setPoprawna] = useState("?");
+  const [noweZadanieSwitch, setNoweZadanieSwitch] = useState(true);
 
   const [aktualneZadanie, setAktualneZadanie] = useState("?");
   const [prawidlwoaOdpowiedz, setPrawidlowaOdpowiedz] = useState<number | null>(
@@ -40,6 +42,10 @@ export default function Game(props: { poziom: string; tryb: string }) {
           <Challenge
             licznikPoprawnychChallenge={licznikPoprawnychChallenge}
             challengeEnd={challengeEnd}
+            setChallengeEnd={setChallengeEnd}
+            setPoprawna={setPoprawna}
+            setNoweZadanieSwitch={setNoweZadanieSwitch}
+            setLicznikPoprawnychChallenge={setLicznikPoprawnychChallenge}
           />
         </View>
       );
@@ -62,6 +68,10 @@ export default function Game(props: { poziom: string; tryb: string }) {
           tryb={tryb}
           setLicznikPoprawnychChallenge={setLicznikPoprawnychChallenge}
           setChallengeEnd={setChallengeEnd}
+          setPoprawna={setPoprawna}
+          poprawna={poprawna}
+          setNoweZadanieSwitch={setNoweZadanieSwitch}
+          noweZadanieSwitch={noweZadanieSwitch}
         />
       </View>
       {lol()}
