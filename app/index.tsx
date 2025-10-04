@@ -11,6 +11,7 @@ import Game from "./gra/Game";
 import Laderboards from "./gra/Laderboards.tsx";
 import { RootStackParamList } from "./RootTS";
 import PoziomTrudnosciUI from "./UI/PoziomTrudnosciUI";
+import SignUpLogIn from "./UI/SignUpLogIn.tsx";
 
 export default function Index() {
   type MenuScreenNavigationProp = StackNavigationProp<
@@ -41,6 +42,12 @@ export default function Index() {
   const Lb = () => (
     <SafeAreaView>
       <Laderboards />
+    </SafeAreaView>
+  );
+
+  const SignUp = () => (
+    <SafeAreaView>
+      <SignUpLogIn />
     </SafeAreaView>
   );
 
@@ -88,6 +95,14 @@ export default function Index() {
           >
             <Text selectable={false} className={menuText}>
               Laderboards
+            </Text>
+          </Pressable>
+          <Pressable
+            className={stylePrassable}
+            onPress={() => navigation.navigate("SignUp")}
+          >
+            <Text selectable={false} className={menuText}>
+              SignUp
             </Text>
           </Pressable>
         </View>
@@ -171,6 +186,21 @@ export default function Index() {
           component={Lb}
           options={{
             title: "Laderboards",
+            headerTitleAlign: "center",
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUp}
+          options={{
+            title: "SignUp",
             headerTitleAlign: "center",
             headerStyle: {
               backgroundColor: "#f4511e",

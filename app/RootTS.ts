@@ -10,6 +10,7 @@ export type RootStackParamList = {
   };
   Challenge: undefined;
   Laderboards: undefined;
+  SignUp: undefined;
 };
 
 export type PoziomTrudnosciScreenProps = {
