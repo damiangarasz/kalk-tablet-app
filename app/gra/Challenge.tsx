@@ -10,6 +10,7 @@ export default function Challenge(props: propsChallenge) {
     setPoprawna,
     setNoweZadanieSwitch,
     setLicznikPoprawnychChallenge,
+    setEkranZapisuLB,
   } = props;
   //zegar odliczania do startu i do zakończenia zadanie
   const [timer, setTimer] = useState(5);
@@ -18,13 +19,14 @@ export default function Challenge(props: propsChallenge) {
 
   useEffect(() => {
     if (startGame == true) {
-      setTimer(180);
+      setTimer(10);
     }
     const odliczanie = setInterval(() => {
       setTimer((x) => {
         //tutaj dodać ligikę zakończenia gry
         if (x == 0) {
           setChallengeEnd(true);
+          setEkranZapisuLB(true);
           return 0;
         }
         return x - 1;
@@ -72,7 +74,7 @@ export default function Challenge(props: propsChallenge) {
 
   useEffect(() => {}, [timer]);
   return (
-    <View className="flex flex-row my-auto">
+    <View className="flex flex-row my-auto relative">
       <Text className="w-[33%] text-center" selectable={false}>
         {zegar}
       </Text>

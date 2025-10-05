@@ -19,6 +19,7 @@ export default function EkranZzadaniem({
   poprawna,
   noweZadanieSwitch,
   setNoweZadanieSwitch,
+  setEkranZapisuLB,
 }: propEkranZzadaniem) {
   const [easy, setEasy] = useState<zadanie>([
     { dialanie: [2, "x", 2], waga: 1 },
@@ -429,6 +430,7 @@ export default function EkranZzadaniem({
           setPoprawna("Game Over");
           setCzyPoprawna("");
           setWpisanyWynik(0);
+          setEkranZapisuLB(true);
         }
       }, 3000);
       //KONIEC
