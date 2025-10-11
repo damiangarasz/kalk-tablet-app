@@ -6,8 +6,14 @@ import Challenge from "./Challenge.tsx";
 import EkranZzadaniem from "./EkranZzadaniem.tsx";
 import TablicaWynikow from "./TablicaWynikw.tsx";
 
-export default function Game(props: { poziom: string; tryb: string }) {
-  const { poziom, tryb } = props;
+export default function Game(props: {
+  poziom: string;
+  tryb: string;
+  setLaderboard: React.Dispatch<
+    React.SetStateAction<{ wynik: number; imie: string }[]>
+  >;
+}) {
+  const { poziom, tryb, setLaderboard } = props;
 
   const [wpisanyWynik, setWpisanyWynik] = useState(0);
   const [poprawna, setPoprawna] = useState("?");
@@ -24,9 +30,7 @@ export default function Game(props: { poziom: string; tryb: string }) {
     useState(0);
   const [challengeEnd, setChallengeEnd] = useState(false);
   const [ekranZapisuLB, setEkranZapisuLB] = useState(false);
-  const [laderBoard, setLaderboard] = useState<
-    { wynik: number; imie: string }[]
-  >([]);
+
   const [imie, setImie] = useState("");
 
   const Odrzuc = () => {
@@ -41,6 +45,10 @@ export default function Game(props: { poziom: string; tryb: string }) {
       lb.push(newPush);
 
       lb.sort((a, b) => b.wynik - a.wynik);
+      if (lb.length > 10) {
+        lb.pop();
+      }
+      console.log(lb);
       return lb;
     });
     setEkranZapisuLB(false);

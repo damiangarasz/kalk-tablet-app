@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import {
   createStackNavigator,
@@ -20,6 +21,43 @@ export default function Index() {
   >;
 
   const [poziom, setPoziom] = useState<string>("medium");
+  const [laderBoard, setLaderboard] = useState<
+    { wynik: number; imie: string }[]
+  >([]);
+
+  useEffect(() => {
+    //odczytanie z pamięci laderboardu
+    async function wczytaj(id: string) {
+      try {
+        const res = await AsyncStorage.getItem(id);
+        if (res) {
+          const { laderBoard } = JSON.parse(res);
+          if (Array.isArray(laderBoard)) {
+            setLaderboard(laderBoard);
+          }
+        }
+      } catch (e) {
+        console.log("Błąd przy odczycie:", e);
+        return;
+      }
+    }
+    wczytaj("laderboard");
+    console.log(laderBoard);
+  }, []);
+
+  useEffect(() => {
+    // zapisanie w pamięci laderboardu
+    const json = { laderBoard };
+    async function zapisz(id: string, value: string) {
+      try {
+        await AsyncStorage.setItem(id, value);
+      } catch {
+        console.log("dupa");
+      }
+    }
+
+    zapisz("laderboard", JSON.stringify(json));
+  }, [laderBoard]);
 
   useEffect(() => {
     console.log(poziom);
@@ -29,19 +67,19 @@ export default function Index() {
 
   const App = () => (
     <SafeAreaView>
-      <Game poziom={poziom} tryb="normal" />
+      <Game poziom={poziom} tryb="normal" setLaderboard={setLaderboard} />
     </SafeAreaView>
   );
 
   const Challenge = () => (
     <SafeAreaView>
-      <Game poziom={poziom} tryb="challenge" />
+      <Game poziom={poziom} tryb="challenge" setLaderboard={setLaderboard} />
     </SafeAreaView>
   );
 
   const Lb = () => (
     <SafeAreaView>
-      <Laderboards />
+      <Laderboards laderBoard={laderBoard} />
     </SafeAreaView>
   );
 
