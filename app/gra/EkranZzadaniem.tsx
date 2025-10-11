@@ -297,6 +297,9 @@ export default function EkranZzadaniem({
     { dialanie: [12, "x", 12], waga: 0.5 },
   ]);
 
+  const [historia, setHistoria] = useState<
+    { zadanie: string; odpowiedz: string; poprawna: string | "" | undefined }[]
+  >([]);
   const [czyPoprawna, setCzyPoprawna] = useState("");
   // const [noweZadanieSwitch, setNoweZadanieSwitch] = useState(true);
 
@@ -314,13 +317,26 @@ export default function EkranZzadaniem({
 
       const index = Math.random() * sum;
 
+      //funkcja sprawdzająca czy w ostatnich 10 razach było to zadanie
+      //do refaktoryzacji lol
       for (let n = 0; n < tabliczka.length; n++) {
         if (index < accumulatedArray[n]) {
-          return tabliczka[n];
+          const concatZadanie = `${tabliczka[n].dialanie[0]}${tabliczka[n].dialanie[1]}${tabliczka[n].dialanie[2]}`;
+          const tempArr = [];
+          for (let i = 0; i < historia.length; i++) {
+            tempArr.push(historia[i].zadanie);
+          }
+          if (tempArr.includes(concatZadanie)) {
+            console.log(tempArr, concatZadanie);
+            setNoweZadanieSwitch((prev) => (prev ? false : true));
+            return;
+          } else {
+            console.log("zadanie które sie nie powtarza ", historia);
+
+            return tabliczka[n];
+          }
         }
       }
-
-      return tabliczka[tabliczka.length - 1];
     }
 
     //prosta funkcja która ustawia wylosowaną wartość do odpowiednich komórek
@@ -376,7 +392,7 @@ export default function EkranZzadaniem({
       //logika kiedy ilość cyfr się zgadza i liczby sa sobie równe
       setCzyPoprawna("poprawna");
     } else {
-      console.log("else we wpisywaniu poprawnej odpowiedzi");
+      console.log("przeszło w else");
     }
   }, [wpisanyWynik]);
 
@@ -421,10 +437,24 @@ export default function EkranZzadaniem({
         //logika która sprawdza jakiego typu mamy gra, normal czy challenge
 
         if (tryb == "normal") {
-          setNoweZadanieSwitch((prev) => (prev ? false : true));
           setPoprawna("?");
+          setNoweZadanieSwitch((prev) => (prev ? false : true));
           setCounterNegative((y) => (y += 1));
           setWpisanyWynik(0);
+          setHistoria((prev) => {
+            const arr = prev;
+            if (arr.length >= 10) {
+              arr.shift();
+            }
+            const present = {
+              zadanie: aktualneZadanie,
+              odpowiedz: wpisanyWynik.toString(),
+              poprawna: prawidlwoaOdpowiedz?.toString(),
+            };
+            arr.push(present);
+            return arr;
+          });
+          setCzyPoprawna("");
         } else if (tryb == "challenge") {
           setChallengeEnd(true);
           setPoprawna("Game Over");
@@ -445,6 +475,19 @@ export default function EkranZzadaniem({
       setWpisanyWynik(0);
       setCzyPoprawna("");
       setLicznikPoprawnychChallenge((y) => (y += 1));
+      setHistoria((prev) => {
+        const arr = prev;
+        if (arr.length >= 10) {
+          arr.shift();
+        }
+        const present = {
+          zadanie: aktualneZadanie,
+          odpowiedz: wpisanyWynik.toString(),
+          poprawna: "",
+        };
+        arr.push(present);
+        return arr;
+      });
     }
   }, [czyPoprawna]);
 

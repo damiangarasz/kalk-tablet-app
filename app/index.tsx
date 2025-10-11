@@ -92,9 +92,9 @@ export default function Index() {
   const Menu = () => {
     const navigation = useNavigation<MenuScreenNavigationProp>();
 
-    const menuText =
-      "h-[75] text-5xl font-bold text-[#f4511e] flex justify-center items-center";
-    const stylePrassable = "border border-[#8e6f6fff]";
+    const menuText = "h-auto text-5xl font-bold text-[#f4511e]";
+    const stylePrassable =
+      "w-[100%] h-[75] border border-[#8e6f6fff] items-center text-center justify-center";
     return (
       <ImageBackground
         className="flex-auto"
@@ -109,6 +109,7 @@ export default function Index() {
               Exercise
             </Text>
           </Pressable>
+
           <Pressable
             className={stylePrassable}
             onPress={() =>
@@ -119,6 +120,7 @@ export default function Index() {
               Difficulty Level
             </Text>
           </Pressable>
+
           <Pressable
             className={stylePrassable}
             onPress={() => navigation.navigate("Challenge")}
@@ -127,6 +129,7 @@ export default function Index() {
               Challenges
             </Text>
           </Pressable>
+
           <Pressable
             className={stylePrassable}
             onPress={() => navigation.navigate("Laderboards")}
@@ -135,6 +138,7 @@ export default function Index() {
               Laderboards
             </Text>
           </Pressable>
+
           <Pressable
             className={stylePrassable}
             onPress={() => navigation.navigate("SignUp")}

@@ -1,6 +1,6 @@
 export type zadanie = { dialanie: (string | number)[]; waga: number }[];
 
-export type jednoZadanie = { dialanie: (string | number)[]; waga: number };
+export type jednoZadanie = { dialanie: (string | number)[]; waga: number } | undefined;
 
 export type propEkranZzadaniem = {
   poziom: string;

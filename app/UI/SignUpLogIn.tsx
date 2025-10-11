@@ -109,7 +109,10 @@ export default function SignUpLogIn() {
   };
 
   return (
-    <ImageBackground className="flex-auto" source={require("../src/bg/bg.png")}>
+    <ImageBackground
+      className="flex-auto h-[100%]"
+      source={require("../src/bg/bg.png")}
+    >
       {isLogInB ? ifLoggedIn() : ifNotLoggIn()}
     </ImageBackground>
   );

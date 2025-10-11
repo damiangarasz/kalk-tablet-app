@@ -4,7 +4,10 @@ interface LaderboardsProps {
 }
 export default function Laderboards({ laderBoard }: LaderboardsProps) {
   return (
-    <ImageBackground className="flex-auto" source={require("../src/bg/bg.png")}>
+    <ImageBackground
+      className="flex-auto h-[100%]"
+      source={require("../src/bg/bg.png")}
+    >
       <View className="h-[600] flex gap-4 pt-6">
         {laderBoard.map((x) => {
           if (x == undefined) {

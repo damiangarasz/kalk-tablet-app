@@ -21,8 +21,11 @@ export default function PoziomTrudnosci({
   }
 
   return (
-    <ImageBackground source={require("../src/bg/bg.png")}>
-      <View className="mt-10 m-auto gap-5 w-[75%] h-[400] ">
+    <ImageBackground
+      className="flex-auto h-[100%] "
+      source={require("../src/bg/bg.png")}
+    >
+      <View className=" m-auto gap-5 w-[75%] h-[700] ">
         <Pressable className={button} onPress={() => press("easy")}>
           <Text selectable={false} className={menuText} style={textStyleButton}>
             Easy
