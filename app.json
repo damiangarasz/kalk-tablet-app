@@ -2,7 +2,7 @@
   "expo": {
     "name": "kalk-tablet-app",
     "slug": "kalk-tablet-app",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "kalktabletapp",
@@ -18,7 +18,7 @@
       },
       "edgeToEdgeEnabled": false,
       "package": "com.damiangarasz.kalktabletapp",
-      "versionCode": 5
+      "versionCode": 6
     },
     "web": {
       "bundler": "metro",

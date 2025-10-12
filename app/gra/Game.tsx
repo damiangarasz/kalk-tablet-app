@@ -56,7 +56,7 @@ export default function Game(props: {
 
   const zapisLaderboardu = () => {
     return (
-      <View className="shadow absolute w-[250] h-[250] bg-lime-100 z-10 mx-auto top-0 left-0 right-0 bottom-0">
+      <View className="shadow absolute w-[75%] h-[250] bg-lime-100 z-10 top-10 left-[12.5%]">
         <Text className="text-center pt-5">{licznikPoprawnychChallenge}</Text>
         <Text className="text-center pt-5">Zapisz swój wynik!</Text>
         <TextInput

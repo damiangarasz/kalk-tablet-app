@@ -19,7 +19,7 @@ export default function Challenge(props: propsChallenge) {
 
   useEffect(() => {
     if (startGame == true) {
-      setTimer(10);
+      setTimer(120);
     }
     const odliczanie = setInterval(() => {
       setTimer((x) => {

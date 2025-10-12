@@ -29,13 +29,14 @@ export default function Index() {
     //odczytanie z pamięci laderboardu
     async function wczytaj(id: string) {
       try {
-        const res = await AsyncStorage.getItem(id);
-        if (res) {
-          const { laderBoard } = JSON.parse(res);
-          if (Array.isArray(laderBoard)) {
-            setLaderboard(laderBoard);
+        await AsyncStorage.getItem(id).then((x) => {
+          if (x) {
+            const { laderBoard } = JSON.parse(x);
+            if (Array.isArray(laderBoard)) {
+              setLaderboard(laderBoard);
+            }
           }
-        }
+        });
       } catch (e) {
         console.log("Błąd przy odczycie:", e);
         return;
